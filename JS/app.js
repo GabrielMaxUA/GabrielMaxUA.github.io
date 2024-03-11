@@ -20,3 +20,33 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 });
+
+document.addEventListener("DOMContentLoaded", function() {
+    var aboutLink = document.querySelector("#about");
+    var goalsLink = document.querySelector("#goals");
+    var linksLink = document.querySelector("#links");
+    var aboutSection = document.querySelector(".aText");
+    var goalsSection = document.querySelector(".leftSide");
+    var linksSection = document.querySelector(".rightSide");
+
+    function hideAllSections() {
+        aboutSection.style.display = "none";
+        goalsSection.style.display = "none";
+        linksSection.style.display = "none";
+    }
+
+    aboutLink.addEventListener("click", function() {
+        hideAllSections();
+        aboutSection.style.display = "block";
+    });
+
+    goalsLink.addEventListener("click", function() {
+        hideAllSections();
+        goalsSection.style.display = "block";
+    });
+
+    linksLink.addEventListener("click", function() {
+        hideAllSections();
+        linksSection.style.display = "block";
+    });
+});
