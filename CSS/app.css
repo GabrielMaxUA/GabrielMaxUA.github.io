@@ -246,14 +246,12 @@ main {
     border-radius: 12px;
     box-shadow: 2px 2px 10px #ffa600, -2px -2px 10px #ffa600;
     margin-top: 200px;
-    display: none;
 }
 
 .rightSide{
     width: 100%;
     text-align: center;
     margin-top: 200px;
-    display: none;
 }
 
 .gallery {

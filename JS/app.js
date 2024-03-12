@@ -39,10 +39,12 @@ document.addEventListener("DOMContentLoaded", function() {
         goalsLink.classList.remove("active");
         linksLink.classList.remove("active");
         aboutLink.classList.remove("active");
+        aboutSection.classList.remove("active");
+        goalsSection.classList.remove("active");
+        linksSection.classList.remove("active");
     }
 
     aboutLink.classList.add("active");
-    
    
     function addActiveClass(link) {
         link.classList.add("active");
