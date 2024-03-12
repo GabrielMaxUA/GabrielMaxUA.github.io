@@ -35,18 +35,37 @@ document.addEventListener("DOMContentLoaded", function() {
         linksSection.style.display = "none";
     }
 
+    function removeActiveClassFromLinks() {
+        goalsLink.classList.remove("active");
+        linksLink.classList.remove("active");
+        aboutLink.classList.remove("active");
+    }
+
+    aboutLink.classList.add("active");
+    
+   
+    function addActiveClass(link) {
+        link.classList.add("active");
+    }
+
     aboutLink.addEventListener("click", function() {
         hideAllSections();
         aboutSection.style.display = "block";
+        removeActiveClassFromLinks();
+        addActiveClass(aboutLink);
     });
 
     goalsLink.addEventListener("click", function() {
         hideAllSections();
         goalsSection.style.display = "block";
+        removeActiveClassFromLinks();
+        addActiveClass(goalsLink);
     });
 
     linksLink.addEventListener("click", function() {
         hideAllSections();
         linksSection.style.display = "block";
+        removeActiveClassFromLinks();
+        addActiveClass(linksLink);
     });
 });

@@ -10,7 +10,6 @@
 body {
     position: relative;
     width: 100%;
-    height: ;
     background-image: url(../Assets/body3.png);
     background-size: cover;
     background-repeat: no-repeat;
@@ -47,6 +46,10 @@ nav {
     align-items: center;
     color: #FFF;
     width: 100vw;
+}
+
+.active {
+    text-decoration: underline;
 }
 
 .left, .right {
@@ -206,7 +209,6 @@ main {
     box-shadow: 2px 2px 10px #ffa600, -2px -2px 10px #ffa600;
     background:#01223d;
     text-align: center;
-    /* display: none; */
 }
 
 .aText h2, .leftSide h2 {
@@ -226,10 +228,6 @@ main {
     font-weight: 400;
     font-size: 1.8em;
     color: #e6e6e6;
-}
-
-.lowerPart {
-    width: 100%;
 }
 
 .leftSide{
