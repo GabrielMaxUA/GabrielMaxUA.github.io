@@ -174,6 +174,10 @@ aside.active {
     font-size: 1.9em;
 }
 
+.nav a:hover{
+    text-decoration: underline;
+}
+
 .wiki {
     justify-content: end;
 }
@@ -284,6 +288,7 @@ main {
     display: flex;
     align-items: center;
     justify-content: center;
+    margin: 30px;
 }
 
 .CSS img, .JS img, .HTML img, .Adobe img, .Linux img {
@@ -298,6 +303,12 @@ main {
 .CSS a, .HTML a, .Adobe a, .Linux a {
     font-family: Geneva, Tahoma, sans-serif;
     font-size: 1.1em;
+    position: absolute; 
+    margin-bottom: 15px;
+}
+
+.CSS a:hover, .HTML a:hover, .Adobe a:hover, .Linux a:hover {
+    text-decoration: underline;
 }
 
 a {
@@ -305,11 +316,6 @@ a {
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-size: 1.3em;
     color: #fff
-}
-
-.CSS a, .HTML a, .Adobe a, .Linux a {
-    position: absolute; 
-    margin-bottom: 15px;
 }
 
 .border {
