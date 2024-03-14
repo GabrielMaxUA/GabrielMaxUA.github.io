@@ -305,10 +305,12 @@ main {
     font-size: 1.1em;
     position: absolute; 
     margin-bottom: 15px;
+    color: #ffffffb9;
 }
 
 .CSS a:hover, .HTML a:hover, .Adobe a:hover, .Linux a:hover {
     text-decoration: underline;
+   color: #fff;
 }
 
 a {
