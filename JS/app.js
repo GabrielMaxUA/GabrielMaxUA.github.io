@@ -21,33 +21,42 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
+
 document.addEventListener("DOMContentLoaded", function() {
     var aboutLink = document.querySelector("#about");
     var goalsLink = document.querySelector("#goals");
     var linksLink = document.querySelector("#links");
+    var worksLink = document.querySelector("#works")
     var aboutSection = document.querySelector(".aText");
     var goalsSection = document.querySelector(".leftSide");
     var linksSection = document.querySelector(".rightSide");
+    var worksSection = document.querySelector(".works");
 
     function hideAllSections() {
         aboutSection.style.display = "none";
         goalsSection.style.display = "none";
         linksSection.style.display = "none";
+        worksSection.style.display = "none";
     }
 
     function removeActiveClassFromLinks() {
-        goalsLink.classList.remove("active");
-        linksLink.classList.remove("active");
-        aboutLink.classList.remove("active");
-        aboutSection.classList.remove("active");
-        goalsSection.classList.remove("active");
-        linksSection.classList.remove("active");
+        goalsLink.classList.remove("Active");
+        linksLink.classList.remove("Active");
+        aboutLink.classList.remove("Active");
+        worksLink.classList.remove("Active");
+        aboutSection.classList.remove("Active");
+        goalsSection.classList.remove("Active");
+        linksSection.classList.remove("Active");
+        worksSection.classList.remove("Active");
     }
 
-    aboutLink.classList.add("active");
+    aboutLink.classList.add("Active");
+    goalsSection.style.display = "none";
+    linksSection.style.display = "none";
+    worksSection.style.display = "none";
    
     function addActiveClass(link) {
-        link.classList.add("active");
+        link.classList.add("Active");
     }
 
     aboutLink.addEventListener("click", function() {
@@ -70,4 +79,12 @@ document.addEventListener("DOMContentLoaded", function() {
         removeActiveClassFromLinks();
         addActiveClass(linksLink);
     });
+
+    worksLink.addEventListener("click", function(){
+        hideAllSections();
+        worksSection.style.display = "block";
+        removeActiveClassFromLinks();
+        addActiveClass(worksLink);
+    })
 });
+
