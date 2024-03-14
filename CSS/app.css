@@ -1,4 +1,14 @@
 
+@font-face {
+    font-family: Maximus;
+    src: url(../Assets/Doctor\ Glitch.otf);
+}
+
+@font-face {
+    font-family: max;
+    src: url(../Assets/zt_gatha/ZTGatha-SemiBold.otf);
+}
+
 *{
     margin: 0;
     padding: 0;
@@ -67,6 +77,10 @@ nav {
 
 .left h4, .right h4 {
     cursor: pointer;
+    color: #dfdede;
+    font-family: max, Georgia, 'Times New Roman', Times, sans-serif;
+    font-size: 1.2em;
+    font-weight: 500;
 }
 
 .menu {
@@ -163,15 +177,16 @@ aside.active {
     flex-flow: row nowrap;
     justify-content: space-around;
     width: 100%;
+    color: #ffffff;
+    font-family: max, Georgia, 'Times New Roman', Times, sans-serif;
+    font-size: 1.7em;
+    font-weight: 500;
 }
 
 .nav a {
     width: 150px;
-    color: #fff;
-    text-decoration: none;
     display: flex;
     align-items: center;
-    font-size: 1.9em;
 }
 
 .nav a:hover{
@@ -215,10 +230,10 @@ main {
 .aText {
     margin-top: 200px;
     width: 100%;
-    font-size: 1.9em;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-weight: 500;
     color: #dfdede;
+    font-family: max, Georgia, 'Times New Roman', Times, sans-serif;
+    font-size: 1.9em;
+    font-weight: 500;
     border: 1px solid #ffa600;
     border-radius: 12px;
     box-shadow: 2px 2px 10px #ffa600, -2px -2px 10px #ffa600;
@@ -230,6 +245,7 @@ main {
 
 .aText h2, .leftSide h2 {
     margin-top: 30px;
+    font-family: Maximus, Georgia, 'Times New Roman', Times, sans-serif;
 }
 
 .aText h3, .leftSide h3 {
@@ -252,11 +268,11 @@ main {
     flex-direction: column;
     align-items: center;
     width: 100%;
+    color: #dfdede;
+    font-family: max, Georgia, 'Times New Roman', Times, sans-serif;
     font-size: 1.9em;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-weight: 500;
     text-align: center;
-    color: #dfdede;
     background:#08243e9e;
     border: 1px solid #ffa600;
     border-radius: 12px;
@@ -278,6 +294,10 @@ main {
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     line-height: 2em;
     letter-spacing: 2px;
+    color: #dfdede;
+    font-family: Maximus, Georgia, 'Times New Roman', Times, sans-serif;
+    font-size: 1.9em;
+    font-weight: 500;
 }
 
 .gallery {
@@ -308,7 +328,8 @@ main {
 }
 
 .CSS a, .HTML a, .Adobe a, .Linux a {
-    font-family: Geneva, Tahoma, sans-serif;
+    font-family: max, Georgia, 'Times New Roman', Times, sans-serif;
+    font-weight: 500;
     font-size: 1.1em;
     position: absolute; 
     margin-bottom: 15px;
@@ -340,11 +361,18 @@ footer {
     width: 20vw;
     text-align: center;
     margin: 10px auto;
-    font-weight: 600;
     font-size: 1.3em;
     padding: 30px;
 }
 
 footer a {
-    color: #fff;
+    color: #ffffff;
+    font-family: max, Georgia, 'Times New Roman', Times, sans-serif;
+    font-size: 1.3em;
+    width: fit-content;
+    margin: 0 auto;
+}
+
+footer a:hover {
+    text-decoration: underline;
 }
