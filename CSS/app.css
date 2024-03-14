@@ -275,6 +275,9 @@ main {
 
 .works > h2, .rightSide > h2 {
     font-size: 3em;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    line-height: 2em;
+    letter-spacing: 2px;
 }
 
 .gallery {
