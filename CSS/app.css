@@ -44,7 +44,7 @@ nav {
     flex-flow: row nowrap;
     justify-content: space-between;
     align-items: center;
-    color: #FFF;
+    color: hsl(0, 0%, 100%);
     width: 100vw;
     border-bottom: 1px solid hsla(0, 2%, 76%, 0.796);
 }
@@ -55,15 +55,15 @@ nav {
 
 .left, .right {
     width: calc(50% - 151px);
-    height: 3.9rem;
+    height: 3.1rem;
     display: flex;
     flex-flow: row nowrap;
     text-align: center;
     justify-content: space-around;
     padding: 10px 0;
     font-size: 1.3em;
-    box-shadow: 20px 0px 5rem hsl(0, 1%, 71%);
-    background-image: linear-gradient(#212121, #323233 8%, #4b4c4c 17%,  hsla(0, 2%, 76%) 52%);
+    box-shadow: 0 -30px 45px -5px hsl(0, 13%, 71%);
+    background-image: linear-gradient(hsl(0, 0%, 13%), hsl(240, 1%, 20%) 8%, hsl(180, 1%, 30%) 27%,  hsl(0, 1%, 77%) 72%);
 }
 
 .left h4, .right h4 {
@@ -183,8 +183,9 @@ nav h4{
     float: none;
 }
 
-.nav a:hover{
+nav h4:hover{
     text-decoration: underline;
+    text-shadow: 2px 2px 3px hsl(0, 0%, 100%), -2px -2px 3px hsl(0, 0%, 100%);
 }
 
 .wiki {
@@ -255,7 +256,7 @@ h4{
 
 footer{
     width: 40%;
-    margin: 0 auto;  
+    margin: 2rem auto;  
 }
 
 footer h3{
@@ -309,6 +310,49 @@ footer h3{
     cursor: pointer;
 }
 
+.works {
+    padding: 0;
+    margin: 0;
+}
+
+.gallery-works{
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.work{
+    margin: 2rem;
+}
+
+.work a{
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: start;
+    width: fit-content;
+    text-decoration: none;
+}
+
+a img {
+    width: 20vw;
+    max-width: 170px;
+}
+
+ a > h2{
+    margin: 0 auto;
+    color: #1f1e1e;
+    font-size: 1.3rem;
+    font-family: max, 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+a > h2:hover{
+    color: #0b0b0b;
+    text-decoration: underline;
+}
+ 
 @media (max-width: 768px) {
     .category {
         width: 90%;
