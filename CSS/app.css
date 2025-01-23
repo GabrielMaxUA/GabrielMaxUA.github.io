@@ -78,13 +78,15 @@ nav {
 }
 
 .menu {
-    cursor: pointer;
-    position: absolute;
+    position: fixed;
     top: 8px;
     right: 8px;
+    float: right;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    z-index: 4;
+    cursor: pointer;
+    transition: transform 0.4s ease-in-out, margin-top 0.4s ease-in-out, width 0.4s ease-in-out ;
 }
 
 .bar {
@@ -97,20 +99,9 @@ nav {
     transition: transform 0.4s ease-in-out, background-color 0.4s ease-in-out, opacity 0.4s ease-in-out, width 0.4s ease-in-out;
 }
 
-.menu {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    z-index: 4;
-    position: fixed;
-    cursor: pointer;
-    transition: transform 0.4s ease-in-out, margin-top 0.4s ease-in-out, width 0.4s ease-in-out ;
-}
-
 .menu.active .bar:nth-child(1) {
-    transform-origin: left;
-    transform: rotate(45deg);
+    transform-origin: right;
+    transform: rotate(-45deg);
     width: calc(40px * 1.41421356237 - 17px);
     background-color: #fff;
 }
@@ -121,14 +112,14 @@ nav {
 }
 
 .menu.active .bar:nth-child(3) {
-    transform-origin: left;
-    transform: rotate(-45deg);
+    transform-origin: right;
+    transform: rotate(45deg);
     width: calc(40px * 1.41421356237 - 17px);
     background-color: #fff;
 }
 
 .menu:not(.active) .bar:nth-child(3), .menu:not(.active) .bar:nth-child(1) {
-    transform-origin: left;
+    transform-origin: right;
     transform: rotate(0deg);
     width: 40px; 
 }
@@ -138,62 +129,45 @@ nav {
     width: 40px; 
 }
 
-.menu.active{
-    margin-top: 17px;
-}
-
 aside {
-    background:rgba(51, 52, 52, 0.655);
     position: fixed;  
-    top: -100px;
+    right: -100vw;
     width: 100vw;
     height: 88px;
-    transition: top 0.4s ease-in-out; 
+    transition: right 0.6s ease-in-out; 
     z-index: 3;
-    border-bottom: 2px solid #002442;
 }
 
 aside.active {
-    top: 0;
-    background:#1d1d1ec6;
+    right: 0;
     position: fixed;
-    border-bottom: 1px solid hsl(240, 3%, 8%);
 }
 
 .nav {
-    line-height: 90px;
     display: flex;
     flex-flow: row nowrap;
-    justify-content: space-around;
-    width: 100%;
-    color: #ffffff;
-    font-family: max, Georgia, 'Times New Roman', Times, sans-serif;
-    font-size: 1.7em;
-    font-weight: 500;
+    justify-content: end;
+    width: fit-content;
+    float: right;
+    padding-top: 0.8rem;
+    margin-right: 80px;
 }
 
 .nav a {
-    width: 150px;
+    width: 3rem;
     display: flex;
+    justify-content: center;
     align-items: center;
     font-size: 1.8rem;
 }
 
-nav h4{
-    float: none;
+.nav img{
+    width: 2rem;
 }
 
 nav h4:hover{
     text-decoration: underline;
     text-shadow: 2px 2px 3px hsl(0, 0%, 100%), -2px -2px 3px hsl(0, 0%, 100%);
-}
-
-.wiki {
-    justify-content: end;
-}
-
-.git {
-    justify-content: start;
 }
 
 main {
@@ -339,6 +313,7 @@ footer h3{
 a img {
     width: 20vw;
     max-width: 170px;
+    margin: 0 auto;
 }
 
  a > h2{
@@ -361,142 +336,59 @@ a > h2:hover{
     .gallery {
         gap: 15px;
     }
-}
-/*
-.ending {
-    margin: 50px auto;
-    font-weight: 400;
-    font-size: 1.8em;
-    color: #e6e6e6;
-}
+    .aImg {
+        width: fit-content;
+        margin-top: 3.3rem;
+    }
 
-.leftSide{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    margin-top: 8rem;
-    width: 100%;
-    color: #efeded;
-    font-family: max, Georgia, 'Times New Roman', Times, sans-serif;
-    font-size: 1.4em;
-    border: 1px solid #e8e7e6;
-    box-shadow: 2px 2px 10px #e8e7e6, -2px -2px 10px #e8e7e6;
-    background:#6b73829e;
-    text-align: center;
-    line-height: 2em;
-    letter-spacing: 0.1rem;
-}
+    .aImg img{
+        width: 40vw;
+        max-width: 170px;
+    }
 
-.works, .rightSide {
-    margin-top: 200px;
-    text-align: center;
-    width: 100%;
-    font-size: 0.9em;
-    margin-top: 8rem;
-    width: 100%;
-    color: #efeded;
-    font-family: max, Georgia, 'Times New Roman', Times, sans-serif;
-    font-size: 1.4em;
-    border: 1px solid #e8e7e6;
-    box-shadow: 2px 2px 10px #e8e7e6, -2px -2px 10px #e8e7e6;
-    background:#6b73829e;
-    text-align: center;
-    line-height: 2em;
-    letter-spacing: 0.1rem;
-}
+    .nav{
+        float: left;
+        padding-top: 8px;
+        margin-right: 0;
+    }
 
-.works > h2, .rightSide > h2 {
-    font-size: 3em;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    line-height: 2em;
-    letter-spacing: 2px;
-    color: #dfdede;
-    font-family: Header, Georgia, 'Times New Roman', Times, sans-serif;
-    font-size: 1.9em;
-    font-weight: 500;
-}
+    nav{
+        flex-flow: column nowrap;
+        justify-content: space-evenly;
+        height: auto;
+    }
 
-.gallery {
-    width: 100%;
-    height: auto;
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-evenly;
-    align-items: center;
-}
+    .left, .right{
+        width: 100vw;
+        font-size: 1rem;
+        padding: 0;
+    }
 
-.CSS, .HTML, .Adobe, .Linux {
-    width: fit-content;
-    height: auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 30px;
-    border-radius: 12px;
-}
+    .right{
+        box-shadow: none;
+        justify-content: center;
+    }
 
-.CSS img, .JS img, .HTML img, .Adobe img, .Linux img {
-    position: relative;
-    width: 190px;
-    height: auto;
-    border: 1px solid #ffd500;
-    border-radius: 12px;
-    box-shadow: 2px 2px 10px #ffa600, -2px -2px 10px #ffa600;
-}
+    .left{
+        /* background-image: linear-gradient(hsl(0, 0%, 13%), hsl(240, 1%, 20%) 8%, hsl(180, 1%, 30%) 27%,  hsl(0, 1%, 77%) 72%); */
+        height: auto;
+        justify-content: space-between;
+        background-image: linear-gradient(hsl(0, 1%, 77%), hsl(180, 1%, 30%) 8%, hsl(240, 1%, 20%) 27%,  hsl(0, 0%, 13%)72%);
+    }
 
-.CSS:hover, .JS:hover, .HTML:hover, .Adobe:hover, .Linux:hover {
-    box-shadow: 2px 2px 20px #ffa600, -2px -2px 20px #ffa600;
-    text-decoration: underline;
-    color: #fff;
-}
+    .left h4, .right h4  {
+        padding-left: 2rem;
+        padding-right: 2rem;
+        text-align: center;
+        width: auto;
+    }
 
-.CSS a, .HTML a, .Adobe a, .Linux a {
-    font-family: max, Georgia, 'Times New Roman', Times, sans-serif;
-    font-weight: 500;
-    font-size: 1.1em;
-    position: absolute; 
-    margin-bottom: 15px;
-    color: #ffffffb9;
+    aside { 
+        left: -100vw;
+        transition: left 0.6s ease-in-out; 
+    }
+    
+    aside.active {
+        left: 0;
+    }
 }
-
-.CSS a:hover, .HTML a:hover, .Adobe a:hover, .Linux a:hover {
-    text-decoration: underline;
-    color: #fff;
-}
-
-a {
-    text-decoration: none;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-size: 1.3em;
-    color: #fff
-}
-
-.border {
-    width: 50%;
-    margin: 0 auto;
-    margin-top: 90px;
-    border: 1px solid #e8e7e6;
-    border-radius: 12px;
-    box-shadow: 2px 2px 15px #e8e7e6, -2px -2px 15px #e8e7e6;
-}
-
-footer {
-    width: 20vw;
-    text-align: center;
-    margin: 10px auto;
-    font-size: 1.3em;
-    padding: 30px;
-}
-
-footer a {
-    color: #ffffff;
-    font-family: max, Georgia, 'Times New Roman', Times, sans-serif;
-    font-size: 1.3em;
-    width: fit-content;
-    margin: 0 auto;
-}
-
-footer a:hover {
-    text-decoration: underline;
-} */
