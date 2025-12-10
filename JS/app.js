@@ -4,6 +4,84 @@
 document.addEventListener("DOMContentLoaded", function() {
 
     // ========================================
+    // Device Detection
+    // ========================================
+    const isMobile = window.innerWidth <= 768;
+
+    // ========================================
+    // Loading Screen
+    // ========================================
+    const loadingScreen = document.getElementById('loadingScreen');
+
+    // Hide loading screen after content loads
+    setTimeout(() => {
+        loadingScreen.classList.add('hidden');
+        setTimeout(() => {
+            loadingScreen.style.display = 'none';
+        }, 500);
+    }, 1500); // Show loader for 1.5 seconds
+
+
+    // ========================================
+    // Scroll Progress Indicator
+    // ========================================
+    const scrollProgress = document.getElementById('scrollProgress');
+
+    function updateScrollProgress() {
+        const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrolled = (window.pageYOffset / windowHeight) * 100;
+        scrollProgress.style.transform = `scaleX(${scrolled / 100})`;
+    }
+
+    window.addEventListener('scroll', updateScrollProgress);
+    updateScrollProgress(); // Initialize
+
+
+    // ========================================
+    // Typing Animation
+    // ========================================
+    const typingText = document.getElementById('typingText');
+    const texts = [
+        'Full Stack Web Developer',
+        'iOS Developer',
+        'Mobile App Developer',
+        'Swift & SwiftUI Enthusiast'
+    ];
+
+    let textIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    let typingSpeed = 100;
+
+    function typeEffect() {
+        const currentText = texts[textIndex];
+
+        if (!isDeleting && charIndex <= currentText.length) {
+            typingText.textContent = currentText.substring(0, charIndex);
+            charIndex++;
+            typingSpeed = 100;
+        } else if (isDeleting && charIndex >= 0) {
+            typingText.textContent = currentText.substring(0, charIndex);
+            charIndex--;
+            typingSpeed = 50;
+        }
+
+        if (charIndex === currentText.length + 1 && !isDeleting) {
+            isDeleting = true;
+            typingSpeed = 2000; // Pause before deleting
+        } else if (charIndex === 0 && isDeleting) {
+            isDeleting = false;
+            textIndex = (textIndex + 1) % texts.length;
+            typingSpeed = 500; // Pause before typing next
+        }
+
+        setTimeout(typeEffect, typingSpeed);
+    }
+
+    // Start typing animation after a short delay
+    setTimeout(typeEffect, 2500);
+
+    // ========================================
     // Matrix-Style Code Background Animation
     // ========================================
     const codeBackground = document.getElementById('codeBackground');
@@ -38,8 +116,11 @@ document.addEventListener("DOMContentLoaded", function() {
         // Random vertical position
         line.style.top = Math.random() * 100 + '%';
 
-        // Random animation duration (slower = more variation)
-        const duration = 15 + Math.random() * 25; // 15-40 seconds
+        // Random animation duration - slower on larger screens for readability
+        const screenWidth = window.innerWidth;
+        const duration = screenWidth > 770
+            ? 20 + Math.random() * 15  // 20-35 seconds (slower, readable) on larger screens
+            : 18 + Math.random() * 2;  // 18-20 seconds on smaller screens
         line.style.animationDuration = duration + 's';
 
         // Random delay
@@ -60,13 +141,16 @@ document.addEventListener("DOMContentLoaded", function() {
         }, (duration + 5) * 1000);
     }
 
-    // Create initial code lines
-    for (let i = 0; i < 12; i++) {
-        setTimeout(() => createCodeLine(), i * 800);
+    // Create initial code lines (reduce on mobile)
+    const initialLines = isMobile ? 8 : 18;
+    const intervalTime = isMobile ? 4000 : 2500;
+
+    for (let i = 0; i < initialLines; i++) {
+        setTimeout(() => createCodeLine(), i * 600);
     }
 
-    // Continuously add new code lines
-    setInterval(createCodeLine, 3000);
+    // Continuously add new code lines (less frequently on mobile)
+    setInterval(createCodeLine, intervalTime);
 
 
     // ========================================
@@ -267,11 +351,37 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
     // ========================================
+    // 3D Tilt Effect on Technology Cards (Desktop Only)
+    // ========================================
+    if (!isMobile) {
+        categories.forEach(category => {
+            category.addEventListener('mousemove', function(e) {
+                const rect = this.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+
+                const rotateX = ((y - centerY) / centerY) * -10; // Max 10deg tilt
+                const rotateY = ((x - centerX) / centerX) * 10;
+
+                this.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px)`;
+            });
+
+            category.addEventListener('mouseleave', function() {
+                this.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
+            });
+
+            // Add transition for smooth tilt
+            category.style.transition = 'transform 0.3s ease';
+        });
+    }
+
+    // ========================================
     // Add subtle floating animation to cards
     // ========================================
     function addFloatingAnimation() {
-        const categories = document.querySelectorAll('.category');
-
         categories.forEach((category, index) => {
             // Random delay for each card
             const delay = Math.random() * 2;
