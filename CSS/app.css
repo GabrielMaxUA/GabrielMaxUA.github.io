@@ -368,8 +368,7 @@ header::before {
     box-shadow:
         0 0 50px rgba(0, 245, 255, 0.5),
         0 8px 32px rgba(0, 0, 0, 0.6);
-    transition: all var(--transition-normal);
-    animation: profile-glow 3s ease-in-out infinite;
+    transition: box-shadow var(--transition-normal);
 }
 
 @keyframes profile-glow {
@@ -385,8 +384,21 @@ header::before {
     }
 }
 
+/* Desktop only - 3D tilt handled by JavaScript */
+@media (min-width: 769px) {
+    .aImg {
+        transform-style: preserve-3d;
+        transform-origin: center center;
+        backface-visibility: visible;
+    }
+
+    .aImg img {
+        transform-style: preserve-3d;
+        backface-visibility: visible;
+    }
+}
+
 .aImg:hover {
-    transform: translateY(-15px) scale(1.05);
     box-shadow:
         0 0 60px rgba(0, 245, 255, 0.6),
         0 12px 48px rgba(0, 0, 0, 0.8);

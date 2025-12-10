@@ -348,7 +348,40 @@ document.addEventListener("DOMContentLoaded", function() {
     if (profileImg) {
         setTimeout(() => {
             profileImg.style.animation = 'fadeIn 0.8s ease-out forwards';
+            // Remove animation after it completes so it doesn't lock the transform
+            setTimeout(() => {
+                profileImg.style.animation = 'none';
+                profileImg.style.opacity = '1';
+            }, 800);
         }, 300);
+    }
+
+
+    // ========================================
+    // 3D Tilt Effect on Profile Image (Desktop Only)
+    // ========================================
+    if (!isMobile && profileImg) {
+        // Set transition and transform style first
+        profileImg.style.transition = 'transform 0.3s ease, box-shadow 0.3s ease';
+        profileImg.style.transformStyle = 'preserve-3d';
+
+        profileImg.addEventListener('mousemove', function(e) {
+            const rect = this.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+
+            const rotateX = ((y - centerY) / centerY) * -10; // Max 10deg tilt
+            const rotateY = ((x - centerX) / centerX) * 10;
+
+            this.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px)`;
+        });
+
+        profileImg.addEventListener('mouseleave', function() {
+            this.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
+        });
     }
 
 
