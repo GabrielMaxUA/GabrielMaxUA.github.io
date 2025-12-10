@@ -27,14 +27,16 @@ document.addEventListener("DOMContentLoaded", function() {
     // ========================================
     const scrollProgress = document.getElementById('scrollProgress');
 
-    function updateScrollProgress() {
-        const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-        const scrolled = (window.pageYOffset / windowHeight) * 100;
-        scrollProgress.style.transform = `scaleX(${scrolled / 100})`;
-    }
+    if (scrollProgress) {
+        function updateScrollProgress() {
+            const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (window.pageYOffset / windowHeight) * 100;
+            scrollProgress.style.width = scrolled + '%';
+        }
 
-    window.addEventListener('scroll', updateScrollProgress);
-    updateScrollProgress(); // Initialize
+        window.addEventListener('scroll', updateScrollProgress);
+        updateScrollProgress(); // Initialize
+    }
 
 
     // ========================================

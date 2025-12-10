@@ -238,12 +238,12 @@ body::after {
     position: fixed;
     top: 0;
     left: 0;
-    height: 4px;
+    width: 0%;
+    height: 6px;
     background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple));
-    box-shadow: 0 0 10px rgba(0, 245, 255, 0.6);
+    box-shadow: 0 0 15px rgba(0, 245, 255, 0.8);
     z-index: 9998;
-    transform-origin: left;
-    transition: transform 0.1s ease-out;
+    transition: width 0.1s ease-out;
 }
 
 /* Header */
