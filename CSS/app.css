@@ -203,9 +203,9 @@ header::before {
     position: relative;
     border-radius: var(--radius-md);
     padding: 5px;
-    background: linear-gradient(135deg, rgba(0, 245, 255, 0.4), rgba(139, 92, 246, 0.4));
+    background: linear-gradient(135deg, rgba(0, 245, 255, 0.7), rgba(139, 92, 246, 0.7));
     box-shadow:
-        0 0 40px rgba(0, 245, 255, 0.3),
+        0 0 50px rgba(0, 245, 255, 0.5),
         0 8px 32px rgba(0, 0, 0, 0.6);
     transition: all var(--transition-normal);
     animation: profile-glow 3s ease-in-out infinite;
@@ -214,12 +214,12 @@ header::before {
 @keyframes profile-glow {
     0%, 100% {
         box-shadow:
-            0 0 30px rgba(0, 245, 255, 0.3),
+            0 0 40px rgba(0, 245, 255, 0.5),
             0 8px 32px rgba(0, 0, 0, 0.6);
     }
     50% {
         box-shadow:
-            0 0 40px rgba(139, 92, 246, 0.4),
+            0 0 50px rgba(139, 92, 246, 0.6),
             0 8px 32px rgba(0, 0, 0, 0.6);
     }
 }
@@ -227,7 +227,7 @@ header::before {
 .aImg:hover {
     transform: translateY(-15px) scale(1.05);
     box-shadow:
-        0 0 50px rgba(0, 245, 255, 0.4),
+        0 0 60px rgba(0, 245, 255, 0.6),
         0 12px 48px rgba(0, 0, 0, 0.8);
 }
 
