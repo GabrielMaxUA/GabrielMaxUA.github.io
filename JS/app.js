@@ -43,45 +43,57 @@ document.addEventListener("DOMContentLoaded", function() {
     // Typing Animation
     // ========================================
     const typingText = document.getElementById('typingText');
-    const texts = [
-        'Full Stack Web Developer',
-        'iOS Developer',
-        'Mobile App Developer',
-        'Swift & SwiftUI Enthusiast'
+    const cursor = document.querySelector('.cursor');
+    const lines = [
+        '• Full Stack Web Developer',
+        '• Swift & SwiftUI Enthusiast'
     ];
+    const text = lines.join('\n');
 
-    let textIndex = 0;
     let charIndex = 0;
-    let isDeleting = false;
     let typingSpeed = 100;
 
     function typeEffect() {
-        const currentText = texts[textIndex];
-
-        if (!isDeleting && charIndex <= currentText.length) {
-            typingText.textContent = currentText.substring(0, charIndex);
+        if (charIndex <= text.length) {
+            const currentText = text.substring(0, charIndex);
+            // Replace newlines with <br> for HTML display and add cursor inline
+            typingText.innerHTML = currentText.replace(/\n/g, '<br>') + '<span class="cursor">|</span>';
             charIndex++;
-            typingSpeed = 100;
-        } else if (isDeleting && charIndex >= 0) {
-            typingText.textContent = currentText.substring(0, charIndex);
-            charIndex--;
-            typingSpeed = 50;
+            setTimeout(typeEffect, typingSpeed);
+        } else {
+            // Animation completes - remove inline cursor
+            const currentText = text.substring(0, charIndex);
+            typingText.innerHTML = currentText.replace(/\n/g, '<br>');
+            // Hide the original cursor element
+            if (cursor) {
+                cursor.style.display = 'none';
+            }
+            // Start social links animation after typing completes
+            animateSocialLinks();
         }
+    }
 
-        if (charIndex === currentText.length + 1 && !isDeleting) {
-            isDeleting = true;
-            typingSpeed = 2000; // Pause before deleting
-        } else if (charIndex === 0 && isDeleting) {
-            isDeleting = false;
-            textIndex = (textIndex + 1) % texts.length;
-            typingSpeed = 500; // Pause before typing next
-        }
-
-        setTimeout(typeEffect, typingSpeed);
+    // Hide the original cursor element since we're using inline cursor
+    if (cursor) {
+        cursor.style.display = 'none';
     }
 
     // Start typing animation after a short delay
     setTimeout(typeEffect, 2500);
+
+    // ========================================
+    // Social Links Animation
+    // ========================================
+    const socialLinks = document.querySelectorAll('.social-link');
+
+    function animateSocialLinks() {
+        // Animate social links appearing one by one with 0.3s interval
+        socialLinks.forEach((link, index) => {
+            setTimeout(() => {
+                link.classList.add('show');
+            }, index * 300); // 0.3s between each icon
+        });
+    }
 
     // ========================================
     // Matrix-Style Code Background Animation
@@ -153,26 +165,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Continuously add new code lines (less frequently on mobile)
     setInterval(createCodeLine, intervalTime);
-
-
-    // ========================================
-    // Hamburger Menu Toggle
-    // ========================================
-    const menu = document.querySelector('.menu');
-    const side = document.querySelector('aside');
-
-    menu.addEventListener('click', function() {
-        menu.classList.toggle('active');
-        side.classList.toggle('active');
-    });
-
-    // Close menu when clicking outside
-    document.addEventListener('click', function(event) {
-        if (!side.contains(event.target) && !menu.contains(event.target)) {
-            menu.classList.remove('active');
-            side.classList.remove('active');
-        }
-    });
 
 
     // ========================================
@@ -455,22 +447,6 @@ document.addEventListener("DOMContentLoaded", function() {
         setTimeout(() => {
             document.body.style.opacity = '1';
         }, 100);
-    });
-
-
-    // ========================================
-    // Responsive Menu Enhancement
-    // ========================================
-    // Close menu when clicking on navigation links in mobile
-    const mobileNavLinks = document.querySelectorAll('.left h4, .right h4');
-
-    mobileNavLinks.forEach(link => {
-        link.addEventListener('click', function() {
-            if (window.innerWidth <= 768) {
-                menu.classList.remove('active');
-                side.classList.remove('active');
-            }
-        });
     });
 
 
