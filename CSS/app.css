@@ -239,7 +239,7 @@ body::after {
     top: 0;
     left: 0;
     width: 0%;
-    height: 6px;
+    height: 2px;
     background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple));
     box-shadow: 0 0 15px rgba(0, 245, 255, 0.8);
     z-index: 9998;
@@ -287,7 +287,7 @@ header {
     -webkit-text-fill-color: transparent;
     background-clip: text;
     margin-bottom: 0.5rem;
-    animation: gradient-shift 3s ease-in-out infinite;
+    animation: gradient-shift 10s ease-in-out infinite;
     background-size: 200% 200%;
 }
 
@@ -485,7 +485,7 @@ nav {
     padding: var(--spacing-sm) var(--spacing-md);
     /* background: var(--glass-bg); */
     backdrop-filter: blur(5px);
-    /* border-bottom: 1px solid var(--glass-border); */
+    border-bottom: 1px solid var(--glass-border);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
     position: relative;
 }
@@ -556,10 +556,10 @@ main {
 }
 
 /* Content Sections */
-.aText, .leftSide, .rightSide, .works {
+.aText, .rightSide, .works {
     background: var(--glass-bg);
     backdrop-filter: blur(30px);
-    border: 1px solid var(--glass-border);
+    border-bottom: 1px solid var(--glass-border);
     border-radius: var(--radius-lg);
     padding: var(--spacing-lg);
     box-shadow:
@@ -572,7 +572,7 @@ main {
     overflow: hidden;
 }
 
-.aText::before, .leftSide::before, .rightSide::before, .works::before {
+.aText::before, .rightSide::before, .works::before {
     content: '';
     position: absolute;
     top: -50%;
@@ -597,9 +597,13 @@ main {
     }
 }
 
-.aText.show, .leftSide.show, .rightSide.show, .works.show {
+.aText.show, .rightSide.show, .works.show {
     opacity: 1;
     transform: translateY(0);
+}
+.aText h2, .rightSide h2, .works h2 {
+    margin-top: 0;
+    margin-bottom: 3rem;
 }
 
 /* Typography */
@@ -607,7 +611,7 @@ h2 {
     font-family: Header, 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: clamp(1.8rem, 4vw, 2.5rem);
     text-align: center;
-    margin-bottom: var(--spacing-md);
+    margin-bottom: 1rem;
     background: linear-gradient(135deg, var(--accent-cyan) 0%, var(--accent-purple) 50%, var(--accent-cyan) 100%);
     background-size: 200% 200%;
     -webkit-background-clip: text;
@@ -632,7 +636,7 @@ h3 {
     font-family: Header, 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: clamp(1.2rem, 2.5vw, 1.5rem);
     text-align: center;
-    margin-top: var(--spacing-md);
+    margin-top: 1rem;
     color: var(--text-secondary);
     position: relative;
     z-index: 1;
@@ -641,20 +645,54 @@ h3 {
 h4 {
     width: 95%;
     margin: 0 auto;
-    text-align: center;
+    text-align: left;
     font-family: max, 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: clamp(1.1rem, 2vw, 1.3rem);
-    line-height: 1.8;
+    line-height: 1.5;
     color: var(--text-muted);
     font-weight: 300;
     position: relative;
     z-index: 1;
 }
 
+.intro-highlight {
+    font-size: clamp(1.25rem, 2.2vw, 1.5rem);
+    font-weight: 500;
+    color: var(--text-primary);
+    display: block;
+    margin-bottom: 0.8rem;
+    line-height: 1.4;
+}
+
+h4 strong {
+    font-size: clamp(1.3rem, 2.2vw, 1.6rem);
+    font-weight: 600;
+    color: var(--accent-cyan);
+    display: inline-block;
+    margin-top: 1rem;
+    margin-bottom: 0.3rem;
+}
+
+h4 ul {
+    margin: 0.5rem 0 1rem 0;
+    padding-left: 2rem;
+}
+
+h4 ul li {
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
+    font-weight: 300;
+}
+
+h4 ul li strong {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
 /* Gallery */
 .gallery {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: var(--spacing-md);
     padding: var(--spacing-md) 0;
     position: relative;
@@ -672,7 +710,7 @@ h4 {
     flex-flow: row wrap;
     justify-content: center;
     align-items: flex-start;
-    gap: var(--spacing-sm);
+    gap: var(--spacing-md);
     opacity: 0;
     transform: translateY(20px);
     position: relative;
@@ -726,20 +764,45 @@ h4 {
     text-shadow: 0 0 10px rgba(0, 245, 255, 0.5);
 }
 
+.tech-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    transition: all var(--transition-normal);
+}
+
+.tech-item:hover {
+    transform: translateY(-5px);
+}
+
 .category img {
     width: 3.5rem;
     height: 3.5rem;
     object-fit: contain;
-    margin: var(--spacing-xs);
     transition: all var(--transition-normal);
     opacity: 0.9;
 }
 
-.category img:hover {
-    transform: scale(1.25) rotate(5deg);
+.tech-item:hover img {
+    transform: scale(1.15) rotate(5deg);
     opacity: 1;
     filter: drop-shadow(0 0 15px rgba(0, 245, 255, 0.6));
-    cursor: pointer;
+}
+
+.tech-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    text-align: center;
+    white-space: nowrap;
+    transition: all var(--transition-normal);
+}
+
+.tech-item:hover .tech-label {
+    color: var(--accent-cyan);
+    text-shadow: 0 0 10px rgba(0, 245, 255, 0.5);
 }
 
 /* Works Section */
@@ -957,6 +1020,22 @@ footer h3 {
     .gallery {
         grid-template-columns: 1fr;
         gap: var(--spacing-sm);
+    }
+
+    .social-links {
+      position: absolute;
+      bottom: -0.3rem;
+      right: auto;
+      display: flex;
+      flex-direction: row;
+      gap: 0.67rem;
+      align-items: center;
+      z-index: 10;
+    }
+
+    .social-link img {
+        width: 1.6rem;
+        height: 1.6rem;
     }
 
 }

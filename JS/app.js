@@ -79,7 +79,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     // Start typing animation after a short delay
-    setTimeout(typeEffect, 2500);
+    setTimeout(typeEffect, 800);
 
     // ========================================
     // Social Links Animation
@@ -171,15 +171,13 @@ document.addEventListener("DOMContentLoaded", function() {
     // Navigation and Section Switching
     // ========================================
     const aboutLink = document.querySelector("#about");
-    const goalsLink = document.querySelector("#goals");
     const linksLink = document.querySelector("#links");
 
     const aboutSection = document.querySelector(".aText");
-    const goalsSection = document.querySelector(".leftSide");
     const linksSection = document.querySelector(".rightSide");
 
-    const allSections = [aboutSection, goalsSection, linksSection];
-    const allLinks = [aboutLink, goalsLink, linksLink];
+    const allSections = [aboutSection, linksSection];
+    const allLinks = [aboutLink, linksLink];
 
     // Function to hide all sections with fade out
     function hideAllSections() {
@@ -212,7 +210,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Initialize - show About section
     aboutLink.classList.add("Active");
-    goalsSection.style.display = "none";
     linksSection.style.display = "none";
 
     // Show About section initially
@@ -228,13 +225,6 @@ document.addEventListener("DOMContentLoaded", function() {
         setTimeout(() => showSection(aboutSection), 300);
         removeActiveClassFromLinks();
         aboutLink.classList.add("Active");
-    });
-
-    goalsLink.addEventListener("click", function() {
-        hideAllSections();
-        setTimeout(() => showSection(goalsSection), 300);
-        removeActiveClassFromLinks();
-        goalsLink.classList.add("Active");
     });
 
     linksLink.addEventListener("click", function() {
