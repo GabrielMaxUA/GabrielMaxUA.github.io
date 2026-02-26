@@ -129,7 +129,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
         // Random vertical position
         line.style.top = Math.random() * 100 + '%';
-
+        // Random horizontal position
+        line.style.left = Math.random() * 100 + '%';
         // Random animation duration - slower on larger screens for readability
         const screenWidth = window.innerWidth;
         const duration = screenWidth > 770
@@ -144,7 +145,17 @@ document.addEventListener("DOMContentLoaded", function() {
         line.style.opacity = (0.08 + Math.random() * 0.12).toString();
 
         // Random colors (cyan, blue, purple)
-        const colors = ['#00f5ff', '#0066ff', '#8b5cf6'];
+        //const colors = ['#00f5ff', '#0066ff', '#8b5cf6'];
+        const colors = [
+          '#00f5ff', // bright cyan
+          '#33f0ff', // slightly lighter cyan
+          '#0099ff', // medium blue
+          '#0066ff', // deep blue
+          '#8b5cf6', // purple
+          '#a78bfa', // lighter purple
+          '#5b21b6', // dark purple
+          '#0ff',    // neon cyan
+        ];
         line.style.color = colors[Math.floor(Math.random() * colors.length)];
 
         codeBackground.appendChild(line);
