@@ -45,8 +45,8 @@ document.addEventListener("DOMContentLoaded", function() {
     const typingText = document.getElementById('typingText');
     const cursor = document.querySelector('.cursor');
     const lines = [
-        '• Full Stack Web Developer',
-        '• Swift & SwiftUI Enthusiast'
+        '• iOS Developer',
+        '• Swift · SwiftUI · Firebase'
     ];
     const text = lines.join('\n');
 
@@ -183,12 +183,14 @@ document.addEventListener("DOMContentLoaded", function() {
     // ========================================
     const aboutLink = document.querySelector("#about");
     const linksLink = document.querySelector("#links");
+    const projectsLink = document.querySelector("#projects");
 
     const aboutSection = document.querySelector(".aText");
     const linksSection = document.querySelector(".rightSide");
+    const projectsSection = document.querySelector(".projects");
 
-    const allSections = [aboutSection, linksSection];
-    const allLinks = [aboutLink, linksLink];
+    const allSections = [aboutSection, projectsSection, linksSection];
+    const allLinks = [aboutLink, projectsLink, linksLink];
 
     // Function to hide all sections with fade out
     function hideAllSections() {
@@ -222,6 +224,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // Initialize - show About section
     aboutLink.classList.add("Active");
     linksSection.style.display = "none";
+    projectsSection.style.display = "none";
 
     // Show About section initially
     setTimeout(() => {
@@ -236,6 +239,13 @@ document.addEventListener("DOMContentLoaded", function() {
         setTimeout(() => showSection(aboutSection), 300);
         removeActiveClassFromLinks();
         aboutLink.classList.add("Active");
+    });
+
+    projectsLink.addEventListener("click", function() {
+        hideAllSections();
+        setTimeout(() => showSection(projectsSection), 300);
+        removeActiveClassFromLinks();
+        projectsLink.classList.add("Active");
     });
 
     linksLink.addEventListener("click", function() {
