@@ -3,10 +3,12 @@
 Portfolio site: **https://gabrielmaxua.github.io/**
 
 I build and ship iOS apps with Swift and SwiftUI. I designed, built and launched
-[LearnScramble](https://apps.apple.com/ca/app/learnscramble/id6828468301) on the App Store as an independent developer (AI-assisted, with Claude as a pair programmer):
+[LearnScramble](https://apps.apple.com/ca/app/learnscramble/id6828468301) on the App Store solo:
 SwiftUI, SwiftData, StoreKit 2, AVFoundation, Speech, and a Firebase / TypeScript backend. I also work with UIKit.
 
-Open to junior and intermediate iOS roles · remote worldwide, or on-site / hybrid in Toronto · Canadian citizen · English, Ukrainian, Russian
+Open to junior and intermediate iOS roles · [Download CV](Assets/Max-Gabriel-CV.pdf)
+
+Remote worldwide, or on-site / hybrid in Toronto · Canadian citizen · English, Ukrainian, Russian
 Contact: through the [portfolio site](https://gabrielmaxua.github.io/#contact) · [LinkedIn](https://www.linkedin.com/in/max-gabriel-418871294/)
 
 ---
