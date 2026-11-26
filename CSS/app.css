@@ -267,9 +267,11 @@ ul { margin: 0; padding: 0; }
     opacity: 0;
     font-size: 14px;
     font-weight: 500;
+    padding-block: 4px; /* room for the dot's ping ring, which overflow would clip */
 }
 
 .live-dot {
+    margin-left: 10px;
     width: 8px;
     height: 8px;
     border-radius: 50%;
