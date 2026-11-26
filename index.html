@@ -3,351 +3,397 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Max Gabriel - iOS Developer. Creator of LearnScramble, a SwiftUI app on the App Store, with a full-stack web background.">
+    <title>Max Gabriel — iOS Developer (Swift, SwiftUI, UIKit)</title>
+    <meta name="description" content="Max Gabriel, iOS developer and Canadian citizen, open to remote work worldwide. Designed and shipped LearnScramble on the App Store as an independent developer: SwiftUI, UIKit, SwiftData, StoreKit 2, Firebase.">
     <meta name="author" content="Max Gabriel">
-    <meta name="keywords" content="iOS developer, Swift, SwiftUI, SwiftData, StoreKit, Firebase, App Store, full-stack developer, portfolio">
+    <link rel="canonical" href="https://gabrielmaxua.github.io/">
+    <meta name="color-scheme" content="dark">
+    <meta name="theme-color" content="#141920">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23e8754f'/%3E%3Ctext x='32' y='42' font-family='-apple-system,Helvetica,Arial,sans-serif' font-size='28' font-weight='800' fill='white' text-anchor='middle'%3EMG%3C/text%3E%3C/svg%3E">
+    <link rel="preload" href="Assets/LEMONMILK-Regular.otf" as="font" type="font/otf" crossorigin>
 
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Max Gabriel - iOS Developer">
-    <meta property="og:description" content="iOS Developer portfolio: LearnScramble on the App Store (SwiftUI, Firebase, StoreKit 2), plus full-stack web projects.">
+    <!-- Social previews (LinkedIn, Slack, iMessage) -->
+    <meta property="og:type" content="profile">
+    <meta property="og:url" content="https://gabrielmaxua.github.io/">
+    <meta property="og:title" content="Max Gabriel — iOS Developer">
+    <meta property="og:description" content="Designed and shipped LearnScramble on the App Store as an independent developer: SwiftUI, SwiftData, StoreKit 2, Firebase. Canadian citizen, open to remote iOS roles.">
+    <meta property="og:image" content="https://gabrielmaxua.github.io/Assets/og-image.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Max Gabriel — iOS Developer">
+    <meta name="twitter:description" content="Designed and shipped LearnScramble on the App Store as an independent developer: SwiftUI, SwiftData, StoreKit 2, Firebase.">
+    <meta name="twitter:image" content="https://gabrielmaxua.github.io/Assets/og-image.jpg">
 
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:title" content="Max Gabriel - iOS Developer">
-    <meta property="twitter:description" content="iOS Developer portfolio: LearnScramble on the App Store (SwiftUI, Firebase, StoreKit 2), plus full-stack web projects.">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Max Gabriel",
+        "jobTitle": "iOS Developer",
+        "url": "https://gabrielmaxua.github.io/",
+        "nationality": "Canada",
+        "address": { "@type": "PostalAddress", "addressLocality": "Toronto", "addressRegion": "ON", "addressCountry": "CA" },
+        "knowsLanguage": ["English", "Ukrainian", "Russian"],
+        "knowsAbout": ["Swift", "SwiftUI", "UIKit", "SwiftData", "StoreKit 2", "iOS", "Firebase", "TypeScript"],
+        "sameAs": [
+            "https://github.com/GabrielMaxUA",
+            "https://www.linkedin.com/in/max-gabriel-418871294/"
+        ]
+    }
+    </script>
 
-    <title>Max Gabriel - iOS Developer</title>
     <link rel="stylesheet" href="CSS/app.css">
 </head>
 <body>
-    <div class="code-background" id="codeBackground"></div>
+    <a class="skip-link" href="#main">Skip to content</a>
 
-    <!-- Loading Screen -->
-    <div class="loading-screen" id="loadingScreen">
-        <div class="loader-content">
-            <div class="loader-logo">MG</div>
-            <div class="loader-text">Loading Portfolio...</div>
-            <div class="loader-bar">
-                <div class="loader-progress"></div>
-            </div>
-        </div>
+    <!-- Ambient background: dot grid, light that follows the cursor, film grain -->
+    <div class="bg-fx" aria-hidden="true">
+        <div class="dots"></div>
+        <div class="cursor-light" id="cursorLight"></div>
+        <div class="grain"></div>
     </div>
 
-    <!-- Scroll Progress Indicator -->
-    <div class="scroll-progress" id="scrollProgress"></div> 
+    <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
 
-    <header>
-        <div class="header-content">
-            <div class="aImg">
-                <img src="./Assets/mainPic2.webp" alt="Max Gabriel - iOS Developer">
-            </div>
-            <div class="header-text">
-                <h1 class="developer-name">Max Gabriel</h1>
-                <div class="typing-container">
-                    <span class="typing-text" id="typingText"></span>
-                    <span class="cursor">|</span>
-                </div>
-            </div>
-        </div>
-        <div class="social-links">
-            <a class="social-link" href="https://wa.me/14168560684" target="_blank">
-                <img src="./Assets/whatsapp.svg" alt="WhatsApp" title="Contact me on WhatsApp">
+    <!-- Dynamic Island navigation: expands at the top, shrinks into a live status while scrolling -->
+    <header class="site-header">
+        <nav class="island" id="island" aria-label="Main">
+            <a class="island-brand" href="#top" aria-label="Max Gabriel, back to top">
+                <img class="island-avatar" src="Assets/mainPic2.webp" alt="" width="34" height="34">
+                <span class="island-name">Max Gabriel</span>
             </a>
-            <a class="social-link" href="https://github.com/GabrielMaxUA" target="_blank">
-                <img src="./Assets/github.png" alt="GitHub" title="View my GitHub profile">
-            </a>
-            <a class="social-link" href="https://www.linkedin.com/in/max-gabriel-418871294/" target="_blank">
-                <img src="./Assets/linkedin.svg" alt="LinkedIn" title="Connect on LinkedIn">
-            </a>
-        </div>
-    </header> 
-<nav>
-    <div class="left">
-        <div><h4 id="about">About</h4></div>
-    </div>
-    <div class="center">
-        <div><h4 id="projects">Projects</h4></div>
-    </div>
-    <div class="right">
-        <div><h4 id="links">Arsenal</h4></div>
-    </div>
-</nav>
-    
-<main>
-    <div class="aText">
-        <h2>About Me</h2>
-<h4>
-<span class="intro-highlight">I'm an iOS developer. I designed, built and shipped <a href="https://apps.apple.com/ca/app/learnscramble/id6828468301" style="color: rgb(63, 119, 249); font-weight: 900" target="_blank">LearnScramble</a>, a SwiftUI app that is live on the App Store — from the first screen to the server behind it, the in-app purchases, 54 languages and the App Review process.</span>
-
-<strong>What I build with:</strong>
-<ul>
-    <li><strong>Swift &amp; SwiftUI</strong> — custom layouts, animations, adaptive designs for different iPhone shapes, right-to-left languages, accessibility</li>
-    <li><strong>Apple frameworks</strong> — SwiftData, StoreKit 2, AVFoundation (camera), Speech, UserNotifications, Keychain</li>
-    <li><strong>Backend for apps</strong> — Firebase (Cloud Functions in TypeScript, Firestore, Storage, Auth, App Check, Crashlytics, Analytics) and AI APIs kept safely on the server</li>
-    <li><strong>Shipping</strong> — TestFlight, App Store Connect, privacy manifests, App Privacy answers, release notes</li>
-</ul>
-
-<strong>Web background:</strong>
-<ul>
-    <li><a href="https://frameme.ca" style="color: rgb(63, 119, 249); font-weight: 900" target="_blank">frameme.ca</a> — full-featured e-commerce platform serving real customers</li>
-    <li><a href="https://easybook.it.com" style="color: rgb(63, 119, 249); font-weight: 900" target="_blank">easybook.it.com</a> — booking application solving genuine business needs</li>
-    <li>Web Developer Intern at Net Karma (February 2025 – June 2025): Laravel e-commerce, Angular upgrades, React Native apps with API integration</li>
-    <li>Diploma in Mobile and Web Development, triOS College Toronto</li>
-</ul>
-
-<strong>What Sets Me Apart — 26 Years of Professional Foundation:</strong><br>
-My diverse background isn't a career change — it's a competitive advantage. From luxury hospitality to property management, I've developed skills that make me a more complete developer:
-
-<ul>
-    <li><strong>Working Under Pressure:</strong> Delivered flawless service to hundreds of guests nightly on Oceana, Princess, and Celebrity cruise lines while coordinating diverse teams across multiple time zones</li>
-    <li><strong>Understanding Client Needs:</strong> Collaborated with people from many cultures, using <strong><h5>English 🇬🇧</h5></strong>, <strong><h5> Ukrainian 🇺🇦</h5></strong>, and <strong><h5>Russian 🇷🇺</h5></strong> to understand both spoken requests and unspoken priorities.</li>
-    <li><strong>Root-Cause Problem Solving:</strong> Don't just fix symptoms; I identify underlying issues and implement solutions that prevent recurrence</li>
-    <li><strong>Stress Resistance & Prioritization:</strong> Managed complex projects with $800K+ budgets, meeting strict deadlines while maintaining quality standards</li>
-    <li><strong>Team Leadership:</strong> Guided teams to peak productivity by prioritizing effectively, communicating clearly across cultural boundaries, and aligning everyone toward common goals</li>
-</ul>
-
-<strong>What I'm Looking For:</strong><br>
-A role as an <strong>iOS developer</strong> (junior or intermediate), where I can ship features from day one and keep growing. Next on my list:
-
-<ul>
-    <li><strong>Deeper iOS:</strong> testing (Swift Testing, XCTest), Swift concurrency, widgets and App Intents</li>
-    <li><strong>Team practice:</strong> code reviews, CI/CD for iOS, working in larger codebases</li>
-</ul>
-
-<strong>My Ideal Team Environment:</strong><br>
-I thrive in small, collaborative teams focused on creating unique products — not just copy-paste solutions. I'm looking for an environment where:
-
-<ul>
-    <li><strong>Innovation Over Repetition:</strong> Building something original and meaningful, not just replicating existing templates</li>
-    <li><strong>Mentorship & Growth:</strong> Working alongside experienced developers who can guide me, challenge me, and accelerate my learning</li>
-    <li><strong>Collaborative Problem-Solving:</strong> Contributing my skills while learning best practices from talented teammates</li>
-</ul>
-
-What I bring isn't just current skills — it's <strong>proven potential</strong>, relentless curiosity, and a track record of mastering new domains quickly. I'm looking for a team that values both what I can do today and the developer I'm becoming tomorrow.
-
-This unique combination — an app shipped to the App Store, decades of leadership and project management experience, plus an unwavering commitment to continuous learning—means I deliver solutions that work, on time, within budget, and exactly as envisioned.
-</h4><br>
-<h3>Let's build something exceptional together.</h3>
-
-    </div>
-    <div class="works projects">
-        <h2>Projects</h2>
-
-        <article class="project-feature">
-            <div class="project-head">
-                <img class="project-icon" src="./Assets/learnscramble/icon.png" alt="LearnScramble app icon">
-                <div>
-                    <h3>LearnScramble</h3>
-                    <p class="project-tagline">Workplace vocabulary for people working in a new language — iOS, live on the App Store.</p>
-                    <div class="project-links">
-                        <a href="https://apps.apple.com/ca/app/learnscramble/id6828468301" target="_blank">App Store</a>
-                        <a href="https://learnscramble.com" target="_blank">Website</a>
-                        <a href="https://learnscramble.com/how-to-play" target="_blank">How it works</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-shots">
-                <img src="./Assets/learnscramble/game.jpg" alt="The game: a picture of a cat, empty answer slots and scrambled letters" loading="lazy">
-                <img src="./Assets/learnscramble/cabinet.jpg" alt="The start screen with the score rings and the floating Scan a tool button" loading="lazy">
-                <img src="./Assets/learnscramble/scanner.jpg" alt="The tool scanner naming an object in two languages" loading="lazy">
-                <img src="./Assets/learnscramble/listening.jpg" alt="The listening test: four pictures, the right one marked green" loading="lazy">
-            </div>
-
-            <p class="project-text">Pick your job (32 professions) and the language you need: spell the words you really use at work from scrambled letters, hear them, say them out loud and pick them by ear. Point the camera at a tool and the app tells you its name in both languages. I built it alone, end to end.</p>
-
-            <ul class="project-points">
-                <li><strong>SwiftUI app</strong> with SwiftData progress, a pronunciation test (Speech framework), a listening test and a camera tool scanner (AVFoundation)</li>
-                <li><strong>54 interface languages</strong>, right-to-left included, and separate layouts for regular iPhones and the folding iPhone</li>
-                <li><strong>Server in TypeScript</strong> on Firebase Cloud Functions: words and pictures made with OpenAI and stored in a shared Firestore word bank, so the AI key never ships in the app</li>
-                <li><strong>Security and cost control:</strong> App Check, anonymous sign-in, per-user daily and monthly limits, alert emails</li>
-                <li><strong>Monetisation:</strong> one-time profession unlocks with StoreKit 2, free trial words counted in the Keychain</li>
-                <li><strong>Shipped properly:</strong> TestFlight, App Review, privacy manifest, privacy policy (Canada / Québec Law 25), Crashlytics and opt-in Analytics</li>
+            <span class="island-status" aria-hidden="true"><span class="live-dot"></span><span id="islandLabel">Open to work</span></span>
+            <ul class="nav-links">
+                <li class="nav-pill" aria-hidden="true"></li>
+                <li><a href="#work">Work</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
+            <a class="island-cta js-email" href="#contact">Email me</a>
+        </nav>
+    </header>
 
-            <div class="project-tags">
-                <span>Swift</span><span>SwiftUI</span><span>SwiftData</span><span>StoreKit 2</span><span>AVFoundation</span><span>Speech</span><span>Firebase</span><span>Cloud Functions</span><span>TypeScript</span><span>OpenAI API</span>
+    <main id="main">
+
+        <!-- Hero -->
+        <section class="hero" id="top">
+            <div class="container hero-inner">
+                <div class="hero-text">
+                    <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span>Available for remote iOS roles worldwide · Canadian citizen</p>
+                    <h1>
+                        <span class="name gradient-text">Max Gabriel</span>
+                        <span class="role">iOS Developer</span>
+                    </h1>
+                    <p class="typing" aria-hidden="true"><span class="prompt">~/swift $</span> building with <span class="typed" id="typed">SwiftUI</span><span class="caret">▍</span></p>
+                    <p class="lead">I build and ship iOS apps. I designed, built and launched <a href="https://apps.apple.com/ca/app/learnscramble/id6828468301" target="_blank" rel="noopener">LearnScramble</a> on the App Store as an independent developer — the SwiftUI app, the TypeScript backend, in-app purchases, 54 languages and App Review.</p>
+                    <div class="cta-row">
+                        <a class="btn btn-glow js-email" href="#contact">Email me</a>
+                        <a class="btn btn-ghost" href="#work">See the app</a>
+                        <!-- Add your CV as Assets/Max-Gabriel-CV.pdf, then uncomment:
+                        <a class="btn btn-ghost" href="Assets/Max-Gabriel-CV.pdf" download>Download CV</a>
+                        -->
+                    </div>
+                    <ul class="social">
+                        <li><a href="https://www.linkedin.com/in/max-gabriel-418871294/" target="_blank" rel="noopener" aria-label="LinkedIn"><img src="Assets/linkedin.svg" alt="" width="22" height="22"></a></li>
+                        <li><a href="https://github.com/GabrielMaxUA" target="_blank" rel="noopener" aria-label="GitHub"><img src="Assets/github-original.svg" alt="" width="22" height="22" class="invert"></a></li>
+                        <li><a href="https://wa.me/14168560684" target="_blank" rel="noopener" aria-label="WhatsApp"><img src="Assets/whatsapp.svg" alt="" width="22" height="22"></a></li>
+                    </ul>
+                </div>
+
+                <div class="hero-visual">
+                    <div class="iphone" aria-hidden="true">
+                        <div class="iphone-screen">
+                            <img src="Assets/learnscramble/game.jpg" alt="" width="600" height="1304" fetchpriority="high">
+                        </div>
+                    </div>
+
+                    <div class="photo-ring">
+                        <img src="Assets/mainPic2.webp" alt="Max Gabriel" width="1024" height="737" fetchpriority="high">
+                    </div>
+
+                    <a class="notif notif-1" href="https://apps.apple.com/ca/app/learnscramble/id6828468301" target="_blank" rel="noopener" aria-label="LearnScramble, live on the App Store">
+                        <img class="notif-icon" src="Assets/learnscramble/icon.png" alt="" width="38" height="38">
+                        <div>
+                            <p class="notif-top"><span>LearnScramble</span><span>now</span></p>
+                            <p class="notif-title">Live on the App Store <span class="notif-arrow" aria-hidden="true">↗</span></p>
+                            <p class="notif-body">Workplace vocabulary in 54 languages</p>
+                        </div>
+                    </a>
+
+                    <div class="notif notif-2">
+                        <span class="notif-icon notif-swift"><img src="Assets/swift.svg" alt="" width="22" height="22"></span>
+                        <div>
+                            <p class="notif-top"><span>Built by Max</span><span>AI-assisted</span></p>
+                            <p class="notif-title">Swift · SwiftUI · UIKit</p>
+                            <p class="notif-body">SwiftData · StoreKit 2 · Firebase</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </article>
 
-        <div class="project-more">
-            <a href="https://frameme.ca" target="_blank"><h3>frameme.ca</h3><p>E-commerce platform for a real business</p></a>
-            <a href="https://easybook.it.com" target="_blank"><h3>easybook.it.com</h3><p>Booking web application</p></a>
+            <div class="container">
+                <ul class="facts" aria-label="Max at a glance">
+                    <li class="glass"><span class="fact-label">Shipped</span><strong>LearnScramble</strong><span>my iOS app, live on the App Store</span></li>
+                    <li class="glass"><span class="fact-label">iOS stack</span><strong>Swift · SwiftUI · UIKit</strong><span>SwiftData, StoreKit 2, AVFoundation</span></li>
+                    <li class="glass"><span class="fact-label">Backend</span><strong>Firebase · TypeScript</strong><span>Cloud Functions, Firestore, App Check</span></li>
+                    <li class="glass"><span class="fact-label">Available</span><strong>Remote, worldwide</strong><span>or on-site / hybrid in Toronto</span></li>
+                </ul>
+            </div>
+
+            <div class="marquee" aria-hidden="true">
+                <div class="marquee-track">
+                    <span>Swift</span><span>SwiftUI</span><span>UIKit</span><span>SwiftData</span><span>StoreKit 2</span><span>AVFoundation</span><span>Speech</span><span>Keychain</span><span>Firebase</span><span>Cloud Functions</span><span>TypeScript</span><span>TestFlight</span><span>App Store Connect</span>
+                    <span>Swift</span><span>SwiftUI</span><span>UIKit</span><span>SwiftData</span><span>StoreKit 2</span><span>AVFoundation</span><span>Speech</span><span>Keychain</span><span>Firebase</span><span>Cloud Functions</span><span>TypeScript</span><span>TestFlight</span><span>App Store Connect</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured project -->
+        <section class="section" id="work" aria-labelledby="work-title">
+            <div class="container">
+                <p class="section-kicker">01 · Featured work</p>
+                <h2 id="work-title">LearnScramble</h2>
+
+                <div class="case">
+                    <div class="case-intro">
+                        <img class="app-icon" src="Assets/learnscramble/icon.png" alt="LearnScramble app icon" width="96" height="96" loading="lazy">
+                        <div>
+                            <p class="case-tagline">Workplace vocabulary for people starting a job in a new language. iOS app, live on the App Store.</p>
+                            <div class="case-links">
+                                <a class="btn btn-glow" href="https://apps.apple.com/ca/app/learnscramble/id6828468301" target="_blank" rel="noopener">View on the App Store</a>
+                                <a class="btn btn-ghost" href="https://learnscramble.com" target="_blank" rel="noopener">Website</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <ul class="shots" aria-label="App screenshots">
+                        <li class="tilt"><img src="Assets/learnscramble/game.jpg" alt="The game: a picture, empty answer slots and scrambled letters" width="600" height="1304" loading="lazy"><span>Spell it</span></li>
+                        <li class="tilt"><img src="Assets/learnscramble/cabinet.jpg" alt="Start screen with progress rings and the Scan a tool button" width="600" height="1304" loading="lazy"><span>Track progress</span></li>
+                        <li class="tilt"><img src="Assets/learnscramble/scanner.jpg" alt="Camera scanner naming a tool in two languages" width="600" height="1304" loading="lazy"><span>Scan a tool</span></li>
+                        <li class="tilt"><img src="Assets/learnscramble/listening.jpg" alt="Listening test: four pictures, the correct one marked green" width="600" height="1304" loading="lazy"><span>Pick by ear</span></li>
+                    </ul>
+
+                    <div class="case-body">
+                        <div class="case-problem">
+                            <h3>What it does</h3>
+                            <p>You pick your job (32 professions) and the language you need. Then you spell the words you'll actually use at work from scrambled letters, hear them, say them out loud and pick them by ear. Point the camera at a tool and the app names it in both languages.</p>
+                            <p><strong>How I built it:</strong> the idea, product design and architecture are mine. I wrote parts of the code and used Claude as an AI pair programmer for the rest.</p>
+                            <p class="note">The source code is private (it's a commercial app). I'm happy to walk you through the codebase on a screen share during an interview.</p>
+                        </div>
+
+                        <div class="highlights">
+                            <div class="highlight glass spotlight">
+                                <h3><span class="h-icon">◆</span>iOS app</h3>
+                                <p class="hl-big">SwiftUI + SwiftData</p>
+                                <ul>
+                                    <li>SwiftUI with custom layouts and animations</li>
+                                    <li>SwiftData for progress, offline-first</li>
+                                    <li>Speech framework pronunciation test, AVFoundation camera scanner</li>
+                                    <li>54 languages including right-to-left, separate layouts for regular and folding iPhones</li>
+                                </ul>
+                            </div>
+                            <div class="highlight glass spotlight">
+                                <h3><span class="h-icon">◆</span>Backend</h3>
+                                <p class="hl-big">0 API keys in the app</p>
+                                <ul>
+                                    <li>Firebase Cloud Functions in TypeScript</li>
+                                    <li>Words and pictures generated with OpenAI and stored in a shared Firestore word bank</li>
+                                    <li>The AI key stays on the server and never ships in the app</li>
+                                </ul>
+                            </div>
+                            <div class="highlight glass spotlight">
+                                <h3><span class="h-icon">◆</span>Security &amp; cost</h3>
+                                <p class="hl-big">Per-user limits</p>
+                                <ul>
+                                    <li>App Check and anonymous sign-in</li>
+                                    <li>Per-user daily and monthly limits</li>
+                                    <li>Alert emails when usage spikes</li>
+                                </ul>
+                            </div>
+                            <div class="highlight glass spotlight">
+                                <h3><span class="h-icon">◆</span>Payments &amp; release</h3>
+                                <p class="hl-big">StoreKit 2</p>
+                                <ul>
+                                    <li>StoreKit 2 one-time unlocks, free trial words counted in the Keychain</li>
+                                    <li>TestFlight, App Review, privacy manifest</li>
+                                    <li>Privacy policy for Canada / Québec Law 25</li>
+                                    <li>Crashlytics and opt-in Analytics</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <ul class="tags" aria-label="Technologies">
+                        <li>Swift</li><li>SwiftUI</li><li>SwiftData</li><li>StoreKit 2</li><li>AVFoundation</li><li>Speech</li><li>Keychain</li><li>Firebase</li><li>Cloud Functions</li><li>TypeScript</li><li>OpenAI API</li>
+                    </ul>
+                </div>
+
+                <h3 class="sub-title">Web projects</h3>
+                <div class="cards">
+                    <a class="card glass spotlight" href="https://frameme.ca" target="_blank" rel="noopener">
+                        <h4>frameme.ca <span aria-hidden="true">↗</span></h4>
+                        <p>E-commerce platform for a real business, serving real customers.</p>
+                    </a>
+                    <a class="card glass spotlight" href="https://easybook.it.com" target="_blank" rel="noopener">
+                        <h4>easybook.it.com <span aria-hidden="true">↗</span></h4>
+                        <p>Booking web application built for a real business need.</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience -->
+        <section class="section" id="experience" aria-labelledby="exp-title">
+            <div class="container">
+                <p class="section-kicker">02 · Background</p>
+                <h2 id="exp-title">Experience</h2>
+
+                <ol class="timeline">
+                    <li>
+                        <div class="tl-meta">Independent</div>
+                        <div class="tl-body glass">
+                            <h3>iOS Developer — LearnScramble</h3>
+                            <p>Took a commercial iOS app from idea to the App Store as an independent developer: product, design, architecture, backend, payments and App Store review. Used Claude as an AI pair programmer.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="tl-meta">2025</div>
+                        <div class="tl-body glass">
+                            <h3>Web Developer — <a href="https://easybook.it.com" target="_blank" rel="noopener">easybook.it.com</a></h3>
+                            <p>Built a booking web application for a real business need.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="tl-meta">2025</div>
+                        <div class="tl-body glass">
+                            <h3>Web Developer — <a href="https://frameme.ca" target="_blank" rel="noopener">frameme.ca</a></h3>
+                            <p>Built a full-featured e-commerce platform for a real business, serving real customers.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="tl-meta">Feb 2025 – Jun 2025</div>
+                        <div class="tl-body glass">
+                            <h3>Web Developer Intern — Net Karma</h3>
+                            <p>Built Laravel e-commerce features, upgraded Angular applications, and worked on React Native apps with API integration.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="tl-meta">Education</div>
+                        <div class="tl-body glass">
+                            <h3>Diploma, Mobile and Web Development — triOS College, Toronto</h3>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="tl-meta">Before tech</div>
+                        <div class="tl-body glass">
+                            <h3>Hospitality &amp; property management</h3>
+                            <p>Served hundreds of guests a night on Oceania, Princess and Celebrity cruise lines, working in international teams. Managed property projects with budgets over $800K, on deadline. This is where I learned to work under pressure, lead people and understand what a client really needs.</p>
+                        </div>
+                    </li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- Skills -->
+        <section class="section" id="skills" aria-labelledby="skills-title">
+            <div class="container">
+                <p class="section-kicker">03 · Toolbox</p>
+                <h2 id="skills-title">Skills</h2>
+
+                <div class="skills">
+                    <div class="skill-group glass spotlight primary">
+                        <h3><span class="tile-sm"><img src="Assets/swift.svg" alt="" width="20" height="20"></span>iOS</h3>
+                        <ul class="tags">
+                            <li><img src="Assets/swift.svg" alt="" width="16" height="16">Swift</li><li><svg class="glyph" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M12 3 2 8l10 5 10-5-10-5z"/><path d="m2 12 10 5 10-5"/><path d="m2 16 10 5 10-5"/></svg>SwiftUI</li><li><svg class="glyph" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/><path d="M7 6.5h.01M10 6.5h.01"/></svg>UIKit</li><li><svg class="glyph" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg>SwiftData</li><li><svg class="glyph" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M5 8h14l-1 13H6L5 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>StoreKit 2</li><li><svg class="glyph" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M4 7h3l2-3h6l2 3h3v13H4z"/><circle cx="12" cy="13" r="4"/></svg>AVFoundation</li><li><svg class="glyph" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 11a7 7 0 0 0 14 0"/><path d="M12 18v4"/></svg>Speech</li><li><svg class="glyph" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10 21a2 2 0 0 0 4 0"/></svg>UserNotifications</li><li><svg class="glyph" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><circle cx="7.5" cy="15.5" r="4.5"/><path d="m11 12 10-10"/><path d="m16 7 3 3"/><path d="m19 4 2 2"/></svg>Keychain</li><li><img src="Assets/xcode-original.svg" alt="" width="16" height="16">Xcode</li><li><svg class="glyph" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4z"/></svg>TestFlight</li><li><svg class="glyph" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m8.5 16.5 4-9"/><path d="m15.5 16.5-1.6-3.6"/><path d="M7 13.5h6.5"/></svg>App Store Connect</li>
+                        </ul>
+                    </div>
+                    <div class="skill-group glass spotlight">
+                        <h3><span class="tile-sm"><img src="Assets/firebase.svg" alt="" width="20" height="20"></span>Backend &amp; cloud</h3>
+                        <ul class="tags">
+                            <li><img src="Assets/firebase.svg" alt="" width="16" height="16">Firebase</li><li><svg class="glyph" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M13 4h-1a3 3 0 0 0-3 3v13"/><path d="M6 11h6"/><path d="m15 13 5 5"/><path d="m20 13-5 5"/></svg>Cloud Functions</li><li><svg class="glyph" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg>Firestore</li><li><svg class="glyph" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>Auth</li><li><svg class="glyph" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M12 2 4 5v6c0 5 3.5 9 8 11 4.5-2 8-6 8-11V5l-8-3z"/><path d="m9 12 2 2 4-4"/></svg>App Check</li><li><svg class="glyph" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><rect x="8" y="6" width="8" height="14" rx="4"/><path d="M12 2v4M4 13h4M16 13h4M5 7l3 2M19 7l-3 2M5 19l3-2M19 19l-3-2"/></svg>Crashlytics</li><li><img src="Assets/typescript.svg" alt="" width="16" height="16">TypeScript</li><li><svg class="glyph" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3z"/><path d="M19 15l.7 1.8 1.8.7-1.8.7L19 20l-.7-1.8-1.8-.7 1.8-.7z"/></svg>OpenAI API</li><li><img src="Assets/googlecloud-original.svg" alt="" width="16" height="16">Google Cloud</li><li><img src="Assets/realm-plain.svg" alt="" width="16" height="16">Realm</li>
+                        </ul>
+                    </div>
+                    <div class="skill-group glass spotlight">
+                        <h3><span class="tile-sm"><img src="Assets/javascript.svg" alt="" width="20" height="20"></span>Web &amp; other</h3>
+                        <ul class="tags">
+                            <li><img src="Assets/javascript.svg" alt="" width="16" height="16">JavaScript</li><li><svg class="glyph" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="3"/><circle cx="12" cy="11" r="1"/><ellipse cx="12" cy="11" rx="4.5" ry="2"/><ellipse cx="12" cy="11" rx="4.5" ry="2" transform="rotate(60 12 11)"/><ellipse cx="12" cy="11" rx="4.5" ry="2" transform="rotate(120 12 11)"/></svg>React Native</li><li><img src="Assets/angular.svg" alt="" width="16" height="16">Angular</li><li><svg class="glyph" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><circle cx="12" cy="12" r="1.5"/><ellipse cx="12" cy="12" rx="10" ry="4"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(120 12 12)"/></svg>React</li><li><img src="Assets/php.png" alt="" width="16" height="16">PHP</li><li><img src="Assets/laravel.svg" alt="" width="16" height="16">Laravel</li><li><img src="Assets/mysql.svg" alt="" width="16" height="16">MySQL</li><li><img src="Assets/java.svg" alt="" width="16" height="16">Java</li><li><img src="Assets/kotlin.svg" alt="" width="16" height="16">Kotlin</li><li><img src="Assets/html.svg" alt="" width="16" height="16">HTML5</li><li><img src="Assets/css.svg" alt="" width="16" height="16">CSS3</li><li><svg class="glyph" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><circle cx="6" cy="5" r="2"/><circle cx="6" cy="19" r="2"/><circle cx="18" cy="7" r="2"/><path d="M6 7v10"/><path d="M18 9c0 5-6 4-11.5 8.5"/></svg>Git</li><li><svg class="glyph" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3z"/><path d="M19 15l.7 1.8 1.8.7-1.8.7L19 20l-.7-1.8-1.8-.7 1.8-.7z"/></svg>AI pair programming (Claude)</li>
+                        </ul>
+                    </div>
+                    <div class="skill-group glass spotlight">
+                        <h3><span class="tile-sm"><svg class="glyph glyph-lg" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="m3 17 6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg></span>Learning now</h3>
+                        <ul class="tags">
+                            <li><svg class="glyph" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg>Swift Testing / XCTest</li><li><svg class="glyph" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M3 7h15"/><path d="m15 4 3 3-3 3"/><path d="M3 17h15"/><path d="m15 14 3 3-3 3"/></svg>Swift concurrency</li><li><svg class="glyph" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><rect x="3" y="3" width="8" height="8" rx="2"/><rect x="13" y="3" width="8" height="8" rx="2"/><rect x="3" y="13" width="8" height="8" rx="2"/><rect x="13" y="13" width="8" height="8" rx="2"/></svg>Widgets &amp; App Intents</li><li><svg class="glyph" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M21 12a9 9 0 0 1-15.5 6.3L3 16"/><path d="M3 12a9 9 0 0 1 15.5-6.3L21 8"/><path d="M21 3v5h-5"/><path d="M3 21v-5h5"/></svg>CI/CD for iOS</li>
+                        </ul>
+                    </div>
+                    <div class="skill-group glass spotlight wide">
+                        <h3>Tools I work with</h3>
+                        <ul class="tool-grid">
+                            <li><span class="tile"><img src="Assets/xcode-original.svg" alt="" width="34" height="34"></span>Xcode</li>
+                            <li><span class="tile"><img src="Assets/github-original.svg" alt="" width="34" height="34"></span>GitHub</li>
+                            <li><span class="tile"><img src="Assets/vscode.svg" alt="" width="34" height="34"></span>VS Code</li>
+                            <li><span class="tile"><img src="Assets/androidstudio-original.svg" alt="" width="34" height="34"></span>Android Studio</li>
+                            <li><span class="tile"><img src="Assets/intellij-original.svg" alt="" width="34" height="34"></span>IntelliJ</li>
+                            <li><span class="tile"><img src="Assets/homebrew-plain-wordmark.svg" alt="" width="34" height="34"></span>Homebrew</li>
+                            <li><span class="tile"><img src="Assets/linux-original.svg" alt="" width="34" height="34"></span>Linux</li>
+                            <li><span class="tile"><img src="Assets/filezilla-original.svg" alt="" width="34" height="34"></span>FileZilla</li>
+                            <li><span class="tile"><img src="Assets/photoshop-original.svg" alt="" width="34" height="34"></span>Photoshop</li>
+                            <li><span class="tile"><img src="Assets/illustrator-plain.svg" alt="" width="34" height="34"></span>Illustrator</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Looking for -->
+        <section class="section" aria-labelledby="looking-title">
+            <div class="container">
+                <p class="section-kicker">04 · Next step</p>
+                <h2 id="looking-title">What I'm looking for</h2>
+
+                <div class="looking">
+                    <div class="looking-text">
+                        <p class="body-lg">A junior or intermediate iOS role on a team that ships. I can take a feature from design to the App Store, and I want to get better at what teams do best: code review, testing and working in a large codebase.</p>
+                        <p class="body-lg">I bring a working app, a habit of finding the root cause instead of patching symptoms, and years of working with clients and teammates across cultures.</p>
+                    </div>
+                    <ul class="looking-facts">
+                        <li class="glass"><span class="lf-label">Work setup</span><strong>Remote, for teams anywhere</strong><span class="lf-sub">Also open to on-site or hybrid in Toronto</span></li>
+                        <li class="glass"><span class="lf-label">Status</span><strong>Canadian citizen</strong><span class="lf-sub">No sponsorship needed in Canada</span></li>
+                        <li class="glass"><span class="lf-label">Working languages</span><strong>English · Ukrainian · Russian</strong><span class="lf-sub">Not available to companies based in Russia</span></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section class="section contact" id="contact" aria-labelledby="contact-title">
+            <div class="container">
+                <div class="contact-card glass">
+                    <p class="section-kicker">05 · Contact</p>
+                    <h2 id="contact-title">Let's build something <span class="gradient-text">together</span></h2>
+                    <p class="body-lg">Hiring for an iOS role? The fastest way to reach me is email.</p>
+                    <!-- The address is assembled in JS so spam bots reading the HTML can't harvest it -->
+                    <div class="email-row">
+                        <a class="email-link js-email" href="#contact" id="emailText">Email me</a>
+                        <button class="copy-btn" type="button" id="copyEmail" hidden>Copy</button>
+                    </div>
+                    <noscript><p class="body-lg">Please enable JavaScript to see my email, or message me on LinkedIn.</p></noscript>
+                    <ul class="contact-links">
+                        <li><a href="https://www.linkedin.com/in/max-gabriel-418871294/" target="_blank" rel="noopener">LinkedIn</a></li>
+                        <li><a href="https://github.com/GabrielMaxUA" target="_blank" rel="noopener">GitHub</a></li>
+                        <li><a href="https://wa.me/14168560684" target="_blank" rel="noopener">WhatsApp</a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>© <span id="year">2026</span> Max Gabriel · Hand-written HTML, CSS &amp; JavaScript, no frameworks.</p>
         </div>
-    </div>
+    </footer>
 
-    <div class="rightSide">
-            <h2 class="ending">My Technical Arsenal </h2>
-            <div class="gallery">
-
-                <!-- iOS -->
-                <div class="category">
-                    <h3>iOS</h3>
-                    <div class="tech-item">
-                        <img src="./Assets/swift.svg" alt="Swift" title="Swift">
-                        <span class="tech-label">Swift</span>
-                    </div>
-                    <div class="tech-item">
-                        <img src="./Assets/swift.svg" alt="SwiftUI" title="SwiftUI">
-                        <span class="tech-label">SwiftUI</span>
-                    </div>
-                    <div class="tech-item">
-                        <img src="./Assets/xcode-original.svg" alt="Xcode" title="Xcode">
-                        <span class="tech-label">Xcode</span>
-                    </div>
-                    <div class="tech-item">
-                        <img src="./Assets/firebase.svg" alt="Firebase" title="Firebase">
-                        <span class="tech-label">Firebase</span>
-                    </div>
-                </div>
-
-                <!-- Programming Languages -->
-                <div class="category">
-                    <h3>Languages</h3>
-                    <div class="tech-item">
-                        <img src="./Assets/java.svg" alt="Java" title="Java">
-                        <span class="tech-label">Java</span>
-                    </div>
-                    <div class="tech-item">
-                        <img src="./Assets/javascript.svg" alt="JavaScript" title="JavaScript">
-                        <span class="tech-label">JavaScript</span>
-                    </div>
-                    <div class="tech-item">
-                        <img src="./Assets/typescript.svg" alt="TypeScript" title="TypeScript">
-                        <span class="tech-label">TypeScript</span>
-                    </div>
-                    <div class="tech-item">
-                        <img src="./Assets/kotlin.svg" alt="Kotlin" title="Kotlin">
-                        <span class="tech-label">Kotlin</span>
-                    </div>
-                    <div class="tech-item">
-                        <img src="./Assets/php.png" alt="PHP" title="PHP">
-                        <span class="tech-label">PHP</span>
-                    </div>
-                </div>
-            
-                <!-- Frameworks -->
-                <div class="category">
-                    <h3>Frameworks</h3>
-                    <div class="tech-item">
-                        <img src="./Assets/angular.svg" alt="Angular" title="Angular">
-                        <span class="tech-label">Angular</span>
-                    </div>
-                    <div class="tech-item">
-                        <img src="./Assets/react-original-wordmark.svg" alt="React" title="React">
-                        <span class="tech-label">React</span>
-                    </div>
-                    <div class="tech-item">
-                        <img src="./Assets/laravel.svg" alt="Laravel" title="Laravel">
-                        <span class="tech-label">Laravel</span>
-                    </div>
-                    <div class="tech-item">
-                        <img src="./Assets/boostrap.svg" alt="Bootstrap" title="Bootstrap">
-                        <span class="tech-label">Bootstrap</span>
-                    </div>
-                </div>
-            
-                <!-- Development Tools -->
-                <div class="category">
-                    <h3>Development Tools</h3>
-                    <div class="tech-item">
-                        <img src="./Assets/androidstudio-original.svg" alt="Android Studio" title="Android Studio">
-                        <span class="tech-label">Android Studio</span>
-                    </div>
-                    <div class="tech-item">
-                        <img src="./Assets/intellij-original.svg" alt="IntelliJ" title="IntelliJ IDEA">
-                        <span class="tech-label">IntelliJ</span>
-                    </div>
-                    <div class="tech-item">
-                        <img src="./Assets/vscode.svg" alt="Visual Studio Code" title="Visual Studio Code">
-                        <span class="tech-label">VS Code</span>
-                    </div>
-                    <div class="tech-item">
-                        <img src="./Assets/filezilla-original.svg" alt="FileZilla" title="FileZilla">
-                        <span class="tech-label">FileZilla</span>
-                    </div>
-                    <div class="tech-item">
-                        <img src="./Assets/homebrew-plain-wordmark.svg" alt="Homebrew" title="Homebrew">
-                        <span class="tech-label">Homebrew</span>
-                    </div>
-                    <div class="tech-item">
-                        <img src="./Assets/linux-original.svg" alt="Linux" title="Linux">
-                        <span class="tech-label">Linux</span>
-                    </div>
-                    <div class="tech-item">
-                        <img src="./Assets/github-original.svg" alt="GitHub" title="GitHub">
-                        <span class="tech-label">GitHub</span>
-                    </div>
-                    <div class="tech-item">
-                        <img src="./Assets/android.svg" alt="Android" title="Android">
-                        <span class="tech-label">Android</span>
-                    </div>
-                </div>
-            
-                <!-- Web Technologies -->
-                <div class="category">
-                    <h3>Web Technologies</h3>
-                    <div class="tech-item">
-                        <img src="./Assets/html.svg" alt="HTML" title="HTML5">
-                        <span class="tech-label">HTML5</span>
-                    </div>
-                    <div class="tech-item">
-                        <img src="./Assets/css.svg" alt="CSS" title="CSS3">
-                        <span class="tech-label">CSS3</span>
-                    </div>
-                    <div class="tech-item">
-                        <img src="./Assets/markdown-original.svg" alt="Markdown" title="Markdown">
-                        <span class="tech-label">Markdown</span>
-                    </div>
-                </div>
-            
-                <!-- Databases -->
-                <div class="category">
-                    <h3>Databases</h3>
-                    <div class="tech-item">
-                        <img src="./Assets/mysql.svg" alt="MySQL" title="MySQL">
-                        <span class="tech-label">MySQL</span>
-                    </div>
-                     <div class="tech-item">
-                        <img src="./Assets/realm-plain.svg" alt="Realm" title="Realm">
-                        <span class="tech-label">Realm</span>
-                    </div>
-                    <div class="tech-item">
-                        <img src="./Assets/firebase.svg" alt="Firebase" title="Firebase">
-                        <span class="tech-label">Firebase</span>
-                    </div>
-                </div>
-
-                <!-- Cloud Services -->
-                <div class="category">
-                    <h3>Cloud Services</h3>
-                    <div class="tech-item">
-                        <img src="./Assets/googlecloud-original.svg" alt="Google Cloud" title="Google Cloud">
-                        <span class="tech-label">Google Cloud</span>
-                    </div>
-                </div>
-
-                <!-- Design Tools -->
-                <div class="category">
-                    <h3>Design Tools</h3>
-                    <div class="tech-item">
-                        <img src="./Assets/illustrator-plain.svg" alt="Adobe Illustrator" title="Adobe Illustrator">
-                        <span class="tech-label">Illustrator</span>
-                    </div>
-                    <div class="tech-item">
-                        <img src="./Assets/photoshop-original.svg" alt="Adobe Photoshop" title="Adobe Photoshop">
-                        <span class="tech-label">Photoshop</span>
-                    </div>  
-            </div>
-            
-    </div>
-</main>
-<div class="border"></div>
-<footer>
-   <h3>Thank you for visiting</h3>
-</footer>
-    
-<script src="JS/app.js"></script>    
+    <script src="JS/app.js" defer></script>
 </body>
 </html>

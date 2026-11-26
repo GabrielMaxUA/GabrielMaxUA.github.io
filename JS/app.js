@@ -1,543 +1,217 @@
-// Modern JavaScript with all animations and interactions
-// No jQuery dependency
+// Progressive enhancements: motion, typing, counters and effects.
+// The page reads fully without JavaScript.
 
-document.addEventListener("DOMContentLoaded", function() {
+document.documentElement.classList.add("js");
 
-    // ========================================
-    // Device Detection
-    // ========================================
-    const isMobile = window.innerWidth <= 768;
-
-    // ========================================
-    // Loading Screen
-    // ========================================
-    const loadingScreen = document.getElementById('loadingScreen');
-
-    // Hide loading screen after content loads
-    setTimeout(() => {
-        loadingScreen.classList.add('hidden');
-        setTimeout(() => {
-            loadingScreen.style.display = 'none';
-        }, 500);
-    }, 1500); // Show loader for 1.5 seconds
-
+document.addEventListener("DOMContentLoaded", function () {
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
 
     // ========================================
-    // Scroll Progress Indicator
+    // Email: assembled here, never written in the HTML (keeps spam bots away)
     // ========================================
-    const scrollProgress = document.getElementById('scrollProgress');
+    const email = ["maxim", "don", "mg"].join(".") + "@" + ["gmail", "com"].join(".");
+    document.querySelectorAll(".js-email").forEach((a) => { a.href = `mailto:${email}`; });
 
-    if (scrollProgress) {
-        function updateScrollProgress() {
-            const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            const scrolled = (window.pageYOffset / windowHeight) * 100;
-            scrollProgress.style.width = scrolled + '%';
-        }
+    const emailText = document.getElementById("emailText");
+    if (emailText) emailText.textContent = email;
 
-        window.addEventListener('scroll', updateScrollProgress);
-        updateScrollProgress(); // Initialize
-    }
-
-
-    // ========================================
-    // Typing Animation
-    // ========================================
-    const typingText = document.getElementById('typingText');
-    const cursor = document.querySelector('.cursor');
-    const lines = [
-        '• iOS Developer',
-        '• Swift · SwiftUI · Firebase'
-    ];
-    const text = lines.join('\n');
-
-    let charIndex = 0;
-    let typingSpeed = 100;
-
-    function typeEffect() {
-        if (charIndex <= text.length) {
-            const currentText = text.substring(0, charIndex);
-            // Replace newlines with <br> for HTML display and add cursor inline
-            typingText.innerHTML = currentText.replace(/\n/g, '<br>') + '<span class="cursor">|</span>';
-            charIndex++;
-            setTimeout(typeEffect, typingSpeed);
-        } else {
-            // Animation completes - remove inline cursor
-            const currentText = text.substring(0, charIndex);
-            typingText.innerHTML = currentText.replace(/\n/g, '<br>');
-            // Hide the original cursor element
-            if (cursor) {
-                cursor.style.display = 'none';
-            }
-            // Start social links animation after typing completes
-            animateSocialLinks();
-        }
-    }
-
-    // Hide the original cursor element since we're using inline cursor
-    if (cursor) {
-        cursor.style.display = 'none';
-    }
-
-    // Start typing animation after a short delay
-    setTimeout(typeEffect, 800);
-
-    // ========================================
-    // Social Links Animation
-    // ========================================
-    const socialLinks = document.querySelectorAll('.social-link');
-
-    function animateSocialLinks() {
-        // Animate social links appearing one by one with 0.3s interval
-        socialLinks.forEach((link, index) => {
-            setTimeout(() => {
-                link.classList.add('show');
-            }, index * 300); // 0.3s between each icon
-        });
-    }
-
-    // ========================================
-    // Matrix-Style Code Background Animation
-    // ========================================
-    const codeBackground = document.getElementById('codeBackground');
-    const codeSnippets = [
-        'const portfolio = { name: "Max Gabriel", role: "Developer" };',
-        'function buildFuture() { return innovation + passion; }',
-        'import { skills } from "./expertise";',
-        'while (learning) { skills++; }',
-        'const tech = ["React", "Angular", "Swift", "UIKit"];',
-        'async function createSolutions() { await deploy(); }',
-        'export default class Developer extends Learner {}',
-        'if (challenge) { solve(creatively); }',
-        'const dream = code + dedication;',
-        'let experience = projects.map(learn);',
-        'return success ? celebrate() : keepTrying();',
-        'class Portfolio { constructor() { this.awesome = true; }}',
-        '() => { pursue(excellence); }',
-        'for (let i = 0; i < infinity; i++) { grow(); }',
-        'const future = await buildCareer();',
-        'git commit -m "Building amazing things"',
-        'npm run build && deploy --production',
-        'docker build -t innovation:latest .',
-        '<div className="passion">Code</div>',
-        'SELECT * FROM opportunities WHERE growth = true;'
-    ];
-
-    function createCodeLine() {
-        const line = document.createElement('div');
-        line.className = 'code-line';
-        line.textContent = codeSnippets[Math.floor(Math.random() * codeSnippets.length)];
-
-        // Random vertical position
-        line.style.top = Math.random() * 100 + '%';
-        // Random horizontal position
-        line.style.left = Math.random() * 100 + '%';
-        // Random animation duration - slower on larger screens for readability
-        const screenWidth = window.innerWidth;
-        const duration = screenWidth > 770
-            ? 20 + Math.random() * 15  // 20-35 seconds (slower, readable) on larger screens
-            : 18 + Math.random() * 2;  // 18-20 seconds on smaller screens
-        line.style.animationDuration = duration + 's';
-
-        // Random delay
-        line.style.animationDelay = Math.random() * 5 + 's';
-
-        // Random opacity
-        line.style.opacity = (0.08 + Math.random() * 0.12).toString();
-
-        // Random colors (cyan, blue, purple)
-        //const colors = ['#00f5ff', '#0066ff', '#8b5cf6'];
-        const colors = [
-          '#00f5ff', // bright cyan
-          '#33f0ff', // slightly lighter cyan
-          '#0099ff', // medium blue
-          '#0066ff', // deep blue
-          '#8b5cf6', // purple
-          '#a78bfa', // lighter purple
-          '#5b21b6', // dark purple
-          '#0ff',    // neon cyan
-        ];
-        line.style.color = colors[Math.floor(Math.random() * colors.length)];
-
-        codeBackground.appendChild(line);
-
-        // Remove after animation
-        setTimeout(() => {
-            line.remove();
-        }, (duration + 5) * 1000);
-    }
-
-    // Create initial code lines (reduce on mobile)
-    const initialLines = isMobile ? 8 : 18;
-    const intervalTime = isMobile ? 4000 : 2500;
-
-    for (let i = 0; i < initialLines; i++) {
-        setTimeout(() => createCodeLine(), i * 600);
-    }
-
-    // Continuously add new code lines (less frequently on mobile)
-    setInterval(createCodeLine, intervalTime);
-
-
-    // ========================================
-    // Navigation and Section Switching
-    // ========================================
-    const aboutLink = document.querySelector("#about");
-    const linksLink = document.querySelector("#links");
-    const projectsLink = document.querySelector("#projects");
-
-    const aboutSection = document.querySelector(".aText");
-    const linksSection = document.querySelector(".rightSide");
-    const projectsSection = document.querySelector(".projects");
-
-    const allSections = [aboutSection, projectsSection, linksSection];
-    const allLinks = [aboutLink, projectsLink, linksLink];
-
-    // Function to hide all sections with fade out
-    function hideAllSections() {
-        allSections.forEach(section => {
-            section.style.opacity = '0';
-            section.style.transform = 'translateY(30px)';
-            setTimeout(() => {
-                section.style.display = 'none';
-            }, 300);
-        });
-    }
-
-    // Function to show a section with fade in
-    function showSection(section) {
-        section.style.display = 'block';
-        setTimeout(() => {
-            section.style.opacity = '1';
-            section.style.transform = 'translateY(0)';
-            section.classList.add('show');
-
-            // Trigger animations for children elements
-            animateChildren(section);
-        }, 50);
-    }
-
-    // Function to remove active class from all links
-    function removeActiveClassFromLinks() {
-        allLinks.forEach(link => link.classList.remove("Active"));
-    }
-
-    // Initialize - show About section
-    aboutLink.classList.add("Active");
-    linksSection.style.display = "none";
-    projectsSection.style.display = "none";
-
-    // Show About section initially
-    setTimeout(() => {
-        aboutSection.classList.add('show');
-        aboutSection.style.opacity = '1';
-        aboutSection.style.transform = 'translateY(0)';
-    }, 200);
-
-    // Navigation click handlers
-    aboutLink.addEventListener("click", function() {
-        hideAllSections();
-        setTimeout(() => showSection(aboutSection), 300);
-        removeActiveClassFromLinks();
-        aboutLink.classList.add("Active");
-    });
-
-    projectsLink.addEventListener("click", function() {
-        hideAllSections();
-        setTimeout(() => showSection(projectsSection), 300);
-        removeActiveClassFromLinks();
-        projectsLink.classList.add("Active");
-    });
-
-    linksLink.addEventListener("click", function() {
-        hideAllSections();
-        setTimeout(() => showSection(linksSection), 300);
-        removeActiveClassFromLinks();
-        linksLink.classList.add("Active");
-    });
-
-
-    // ========================================
-    // Intersection Observer for Scroll Animations
-    // ========================================
-    const observerOptions = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.1
-    };
-
-    // Callback for intersection observer
-    const observerCallback = (entries, observer) => {
-        entries.forEach((entry, index) => {
-            if (entry.isIntersecting) {
-                // Add staggered delay for multiple elements
+    const copyBtn = document.getElementById("copyEmail");
+    if (copyBtn && navigator.clipboard) {
+        copyBtn.hidden = false;
+        copyBtn.addEventListener("click", () => {
+            navigator.clipboard.writeText(email).then(() => {
+                copyBtn.textContent = "Copied ✓";
+                copyBtn.classList.add("copied");
                 setTimeout(() => {
-                    entry.target.classList.add('show');
-                }, index * 100);
-                observer.unobserve(entry.target);
-            }
-        });
-    };
-
-    const observer = new IntersectionObserver(observerCallback, observerOptions);
-
-    // Observe category cards
-    const categories = document.querySelectorAll('.category');
-    categories.forEach(category => {
-        observer.observe(category);
-    });
-
-    // Function to animate children elements when section becomes visible
-    function animateChildren(section) {
-        const categories = section.querySelectorAll('.category');
-
-        categories.forEach((category, index) => {
-            setTimeout(() => {
-                category.classList.add('show');
-            }, index * 150);
+                    copyBtn.textContent = "Copy";
+                    copyBtn.classList.remove("copied");
+                }, 2000);
+            });
         });
     }
 
+    // Footer year
+    const year = document.getElementById("year");
+    if (year) year.textContent = new Date().getFullYear();
 
     // ========================================
-    // Parallax Effect on Header
+    // Scroll progress bar + active nav link
     // ========================================
-    const header = document.querySelector('header');
+    const progress = document.getElementById("scrollProgress");
+    const navLinks = [...document.querySelectorAll(".nav-links a")];
+    const sections = navLinks.map((a) => document.querySelector(a.getAttribute("href")));
     let ticking = false;
 
-    function updateParallax(scrollPos) {
-        // Subtle parallax - moves slower than scroll
-        const parallaxSpeed = 0.5;
-        const yPos = -(scrollPos * parallaxSpeed);
+    const island = document.getElementById("island");
+    const islandLabel = document.getElementById("islandLabel");
+    const pill = document.querySelector(".nav-pill");
+    let activeIndex = -2;
 
-        if (header) {
-            header.style.backgroundPositionY = `${yPos}px`;
+    // Slide the highlight under a link (or hide it)
+    function movePill(link) {
+        if (!pill) return;
+        if (!link) { pill.style.opacity = "0"; return; }
+        pill.style.left = `${link.offsetLeft}px`;
+        pill.style.width = `${link.offsetWidth}px`;
+        pill.style.opacity = "1";
+    }
+
+    navLinks.forEach((a) => {
+        a.addEventListener("mouseenter", () => movePill(a));
+        a.addEventListener("mouseleave", () => movePill(navLinks[activeIndex]));
+    });
+
+    function onScroll() {
+        const max = document.documentElement.scrollHeight - window.innerHeight;
+        if (progress) progress.style.transform = `scaleX(${max > 0 ? window.scrollY / max : 0})`;
+
+        const line = window.scrollY + window.innerHeight * 0.35;
+        let current = -1;
+        sections.forEach((s, i) => { if (s && s.offsetTop <= line) current = i; });
+        navLinks.forEach((a, i) => a.classList.toggle("active", i === current));
+
+        // Dynamic Island: compact while scrolling, showing the current section
+        if (island) island.classList.toggle("compact", window.scrollY > 120);
+        if (islandLabel) {
+            const text = current >= 0 ? navLinks[current].textContent : "Open to work";
+            if (islandLabel.textContent !== text) islandLabel.textContent = text;
         }
-
+        if (activeIndex !== current) {
+            activeIndex = current;
+            movePill(navLinks[current]);
+        }
         ticking = false;
     }
 
-    window.addEventListener('scroll', function() {
-        const scrollPos = window.pageYOffset || document.documentElement.scrollTop;
-
-        // Use requestAnimationFrame for smooth performance
+    window.addEventListener("scroll", () => {
         if (!ticking) {
-            window.requestAnimationFrame(() => updateParallax(scrollPos));
+            requestAnimationFrame(onScroll);
             ticking = true;
         }
-    });
-
-
-    // ========================================
-    // Smooth Hover Effects Enhancement
-    // ========================================
-    // Add ripple effect to navigation items
-    const navItems = document.querySelectorAll('.left h4, .right h4');
-
-    navItems.forEach(item => {
-        item.addEventListener('mouseenter', function(e) {
-            this.style.transform = 'scale(1.05)';
-        });
-
-        item.addEventListener('mouseleave', function(e) {
-            this.style.transform = 'scale(1)';
-        });
-    });
-
+    }, { passive: true });
+    onScroll();
 
     // ========================================
-    // Profile Image Animation on Load
+    // Typing effect in the hero
     // ========================================
-    const profileImg = document.querySelector('.aImg');
-    if (profileImg) {
-        setTimeout(() => {
-            profileImg.style.animation = 'fadeIn 0.8s ease-out forwards';
-            // Remove animation after it completes so it doesn't lock the transform
-            setTimeout(() => {
-                profileImg.style.animation = 'none';
-                profileImg.style.opacity = '1';
-            }, 800);
-        }, 300);
-    }
+    const typed = document.getElementById("typed");
+    const words = ["SwiftUI", "UIKit", "SwiftData", "StoreKit 2", "AVFoundation", "Firebase", "TypeScript"];
 
+    if (typed && !reduceMotion) {
+        let w = 0;
+        let c = words[0].length;
+        let deleting = true;
 
-    // ========================================
-    // 3D Tilt Effect on Profile Image (Desktop Only)
-    // ========================================
-    if (!isMobile && profileImg) {
-        // Set transition and transform style first
-        profileImg.style.transition = 'transform 0.3s ease, box-shadow 0.3s ease';
-        profileImg.style.transformStyle = 'preserve-3d';
+        function tick() {
+            const word = words[w];
+            typed.textContent = word.slice(0, c);
 
-        profileImg.addEventListener('mousemove', function(e) {
-            const rect = this.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
-
-            const rotateX = ((y - centerY) / centerY) * -10; // Max 10deg tilt
-            const rotateY = ((x - centerX) / centerX) * 10;
-
-            this.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px)`;
-        });
-
-        profileImg.addEventListener('mouseleave', function() {
-            this.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
-        });
-    }
-
-
-    // ========================================
-    // 3D Tilt Effect on Technology Cards (Desktop Only)
-    // ========================================
-    if (!isMobile) {
-        categories.forEach(category => {
-            category.addEventListener('mousemove', function(e) {
-                const rect = this.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-
-                const centerX = rect.width / 2;
-                const centerY = rect.height / 2;
-
-                const rotateX = ((y - centerY) / centerY) * -10; // Max 10deg tilt
-                const rotateY = ((x - centerX) / centerX) * 10;
-
-                this.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px)`;
-            });
-
-            category.addEventListener('mouseleave', function() {
-                this.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
-            });
-
-            // Add transition for smooth tilt
-            category.style.transition = 'transform 0.3s ease';
-        });
-    }
-
-    // ========================================
-    // Add subtle floating animation to cards
-    // ========================================
-    function addFloatingAnimation() {
-        categories.forEach((category, index) => {
-            // Random delay for each card
-            const delay = Math.random() * 2;
-            category.style.animationDelay = `${delay}s`;
-        });
-    }
-
-    // Call after elements are visible
-    setTimeout(addFloatingAnimation, 1000);
-
-
-    // ========================================
-    // Smooth Scroll Behavior Enhancement
-    // ========================================
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
+            if (deleting) {
+                if (c > 0) { c--; return setTimeout(tick, 45); }
+                deleting = false;
+                w = (w + 1) % words.length;
+                return setTimeout(tick, 250);
             }
-        });
-    });
-
-
-    // ========================================
-    // Add Loading Animation
-    // ========================================
-    window.addEventListener('load', function() {
-        document.body.style.opacity = '0';
-        document.body.style.transition = 'opacity 0.5s ease';
-
-        setTimeout(() => {
-            document.body.style.opacity = '1';
-        }, 100);
-    });
-
-
-    // ========================================
-    // Add Cursor Trail Effect (Subtle)
-    // ========================================
-    let mouseX = 0;
-    let mouseY = 0;
-    let cursorX = 0;
-    let cursorY = 0;
-
-    document.addEventListener('mousemove', function(e) {
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-    });
-
-    // Subtle cursor follower (only on larger screens)
-    if (window.innerWidth > 768) {
-        function animateCursor() {
-            const dx = mouseX - cursorX;
-            const dy = mouseY - cursorY;
-
-            cursorX += dx * 0.1;
-            cursorY += dy * 0.1;
-
-            requestAnimationFrame(animateCursor);
+            if (c < words[w].length) { c++; return setTimeout(tick, 90); }
+            deleting = true;
+            setTimeout(tick, 1800);
         }
-        animateCursor();
+        setTimeout(tick, 2000);
     }
 
-
     // ========================================
-    // Preload Optimization
+    // Reveal on scroll (staggered) + counters
     // ========================================
-    // Lazy load images that are not immediately visible
-    const images = document.querySelectorAll('img[data-src]');
+    const revealTargets = document.querySelectorAll(
+        ".section .container > *, .facts li, .shots li, .highlight, .timeline li, .skill-group, .card, .looking-facts li"
+    );
 
-    const imageObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const img = entry.target;
-                img.src = img.dataset.src;
-                img.removeAttribute('data-src');
-                imageObserver.unobserve(img);
-            }
+    function countUp(el) {
+        const target = parseInt(el.dataset.count, 10);
+        if (!target || target < 2 || reduceMotion) return;
+        const start = performance.now();
+        const duration = 1200;
+        function frame(now) {
+            const t = Math.min((now - start) / duration, 1);
+            el.textContent = Math.round(target * (1 - Math.pow(1 - t, 3)));
+            if (t < 1) requestAnimationFrame(frame);
+        }
+        requestAnimationFrame(frame);
+    }
+
+    if ("IntersectionObserver" in window) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (!entry.isIntersecting) return;
+                entry.target.classList.add("visible");
+                entry.target.querySelectorAll("[data-count]").forEach(countUp);
+                observer.unobserve(entry.target);
+            });
+        }, { rootMargin: "0px 0px -60px 0px", threshold: 0.05 });
+
+        revealTargets.forEach((el) => {
+            // Stagger siblings so groups cascade in
+            const index = [...el.parentElement.children].indexOf(el);
+            el.style.setProperty("--d", `${Math.min(index, 6) * 0.08}s`);
+            el.classList.add("reveal");
+            observer.observe(el);
         });
-    });
-
-    images.forEach(img => imageObserver.observe(img));
-
-
-    // ========================================
-    // Performance Optimization
-    // ========================================
-    // Debounce function for resize events
-    function debounce(func, wait) {
-        let timeout;
-        return function executedFunction(...args) {
-            const later = () => {
-                clearTimeout(timeout);
-                func(...args);
-            };
-            clearTimeout(timeout);
-            timeout = setTimeout(later, wait);
-        };
     }
 
-    // Handle window resize
-    const handleResize = debounce(function() {
-        // Reset animations on resize if needed
-        console.log('Window resized - optimized');
-    }, 250);
-
-    window.addEventListener('resize', handleResize);
-
-
     // ========================================
-    // Console Easter Egg
+    // Desktop-only pointer effects
     // ========================================
-    console.log('%c🚀 Welcome to Max Gabriel\'s Portfolio! ', 'background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 10px 20px; font-size: 16px; font-weight: bold; border-radius: 8px;');
-    console.log('%cBuilt with modern web technologies and love ❤️', 'color: #667eea; font-size: 12px; font-style: italic;');
+    if (finePointer && !reduceMotion) {
+        // Ambient light that eases after the cursor
+        const light = document.getElementById("cursorLight");
+        if (light) {
+            let tx = window.innerWidth / 2, ty = 200, lx = tx, ly = ty;
+            window.addEventListener("pointermove", (e) => {
+                tx = e.clientX;
+                ty = e.clientY;
+                light.classList.add("on");
+            }, { passive: true });
+            document.addEventListener("pointerleave", () => light.classList.remove("on"));
+            (function follow() {
+                lx += (tx - lx) * 0.08;
+                ly += (ty - ly) * 0.08;
+                light.style.transform = `translate(${lx}px, ${ly}px)`;
+                requestAnimationFrame(follow);
+            })();
+        }
 
+        // Spotlight glow that follows the cursor on cards
+        document.querySelectorAll(".spotlight").forEach((card) => {
+            card.addEventListener("pointermove", (e) => {
+                const r = card.getBoundingClientRect();
+                card.style.setProperty("--mx", `${e.clientX - r.left}px`);
+                card.style.setProperty("--my", `${e.clientY - r.top}px`);
+            });
+        });
+
+        // 3D tilt: stronger on the app screenshots, subtle on cards
+        function addTilt(selector, maxDeg, lift) {
+            document.querySelectorAll(selector).forEach((el) => {
+                el.addEventListener("pointerenter", () => {
+                    el.style.transition = "transform .15s ease-out, border-color .3s";
+                });
+                el.addEventListener("pointermove", (e) => {
+                    const r = el.getBoundingClientRect();
+                    const x = (e.clientX - r.left) / r.width - 0.5;
+                    const y = (e.clientY - r.top) / r.height - 0.5;
+                    el.style.transform = `perspective(900px) rotateY(${x * maxDeg}deg) rotateX(${y * -maxDeg}deg) translateY(-${lift}px)`;
+                });
+                el.addEventListener("pointerleave", () => {
+                    el.style.transition = "transform .6s cubic-bezier(.2, .7, .2, 1), border-color .3s";
+                    el.style.transform = "";
+                });
+            });
+        }
+
+        addTilt(".tilt", 8, 6);
+        addTilt(".highlight, .skill-group, .card, .facts li, .looking-facts li", 5, 4);
+    }
+
+    console.log("%c Hi, recruiter or fellow dev 👋  Let's talk: see the Contact section ", "background:#f5f5f7; color:#000; padding:8px 14px; font-weight:700; border-radius:8px;");
 });
