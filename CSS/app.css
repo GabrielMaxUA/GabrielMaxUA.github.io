@@ -948,7 +948,7 @@ a.notif:hover .notif-arrow { transform: translate(2px, -2px); }
 .tool-grid {
     list-style: none;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(88px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(76px, 1fr));
     gap: 20px 12px;
 }
 
