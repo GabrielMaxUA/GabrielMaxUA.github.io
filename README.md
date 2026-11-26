@@ -8,7 +8,7 @@ SwiftUI, SwiftData, StoreKit 2, AVFoundation, Speech, and a Firebase / TypeScrip
 
 Open to junior and intermediate iOS roles · [Download CV](Assets/Max-Gabriel-CV.pdf)
 
-Remote worldwide, or on-site / hybrid in Toronto · Canadian citizen · English, Ukrainian, Russian
+Remote preferred, also open to hybrid or on-site · Based in Toronto · Canadian citizen · English, Ukrainian, Russian
 Contact: through the [portfolio site](https://gabrielmaxua.github.io/#contact) · [LinkedIn](https://www.linkedin.com/in/max-gabriel-418871294/)
 
 ---
