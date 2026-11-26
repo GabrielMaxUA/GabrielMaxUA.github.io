@@ -348,7 +348,7 @@ ul { margin: 0; padding: 0; }
 /* ============================================
    Hero
    ============================================ */
-.hero { position: relative; padding: 150px 0 0; isolation: isolate; }
+.hero { position: relative; padding: 150px 0 0; isolation: isolate; overflow-x: clip; }
 
 /* Stage light: a soft beam from above, like a keynote spotlight */
 .hero::before {
